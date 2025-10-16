@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <url>
+    <loc>https://machwristbands.lk</loc>
+    <image:image>
+      <image:loc>https://machwristbands.lk/Mach-Wristband-Logo.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://machwristbands.lk/Mach-Wristband-OG-Logo.png</image:loc>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://machwristbands.lk/galary</loc>
+    <image:image>
+      <image:loc>https://machwristbands.lk/images/Galary/2-copy.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://machwristbands.lk/images/Galary/3-copy.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://machwristbands.lk/images/Galary/4-copy.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://machwristbands.lk/images/Galary/5-copy.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://machwristbands.lk/images/Galary/6-copy.webp</image:loc>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://machwristbands.lk/product/cmyk</loc>
+    <image:image>
+      <image:loc>https://machwristbands.lk/images/product-row/CMYK print/24-copy.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://machwristbands.lk/images/product-row/CMYK print/25-copy.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://machwristbands.lk/images/product-row/CMYK print/26-copy.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://machwristbands.lk/images/product-row/CMYK print/27-copy.webp</image:loc>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://machwristbands.lk/product/debossed</loc>
+    <image:image>
+      <image:loc>https://machwristbands.lk/images/product-row/Debossed/1-copy.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://machwristbands.lk/images/product-row/Debossed/2-copy.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://machwristbands.lk/images/product-row/Debossed/4-copy.webp</image:loc>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://machwristbands.lk/product/embossed</loc>
+    <image:image>
+      <image:loc>https://machwristbands.lk/images/product-row/Embossed/9-copy.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://machwristbands.lk/images/product-row/Embossed/11-copy.webp</image:loc>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://machwristbands.lk/product/screen-printing</loc>
+    <image:image>
+      <image:loc>https://machwristbands.lk/images/product-row/Screen Print/16_copy.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://machwristbands.lk/images/product-row/ScreenPrint/17_copy.webp</image:loc>
+    </image:image>
+  </url>
+
+</urlset>

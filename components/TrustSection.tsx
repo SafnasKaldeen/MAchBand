@@ -9,36 +9,52 @@ export default function TrustSection() {
 
   const logos = [
     {
-      name: "Nike",
-      img: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg",
+      name: "Brandix",
+      img: "/Final-Web-Images/Images/Company Logos/Brandix_Apparel_Limited.webp",
     },
     {
-      name: "Adidas",
-      img: "https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg",
+      name: "Commercial Bank",
+      img: "/Final-Web-Images/Images/Company Logos/commercial-bank-of-ceylon-plc-seeklogo copy.webp",
     },
     {
-      name: "Coca-Cola",
-      img: "https://upload.wikimedia.org/wikipedia/commons/c/ce/Coca-Cola_logo.svg",
+      name: "DHL Express",
+      img: "/Final-Web-Images/Images/Company Logos/DHL Express Delivery.webp",
     },
     {
-      name: "Apple",
-      img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
+      name: "Elephant House",
+      img: "/Final-Web-Images/Images/Company Logos/Elephant_House_logo.webp",
     },
     {
-      name: "Microsoft",
-      img: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg",
+      name: "Keels",
+      img: "/Final-Web-Images/Images/Company Logos/Keells food products.webp",
     },
     {
-      name: "Netflix",
-      img: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
+      name: "Marriott Hotels",
+      img: "/Final-Web-Images/Images/Company Logos/Marriott_hotels_logo.webp",
     },
     {
-      name: "Amazon",
-      img: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+      name: "MAS Holdings",
+      img: "/Final-Web-Images/Images/Company Logos/mas holdings company.webp",
     },
     {
-      name: "Google",
-      img: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+      name: "NPP",
+      img: "/Final-Web-Images/Images/Company Logos/NPP_Logo copy.webp",
+    },
+    {
+      name: "SLIIT University",
+      img: "/Final-Web-Images/Images/Company Logos/SLIIT university.webp",
+    },
+    {
+      name: "University of Jaffna",
+      img: "/Final-Web-Images/Images/Company Logos/university of jaffna.webp",
+    },
+    {
+      name: "University of Moratuwa",
+      img: "/Final-Web-Images/Images/Company Logos/university of moratuwa.webp",
+    },
+    {
+      name: "University of Peradeniya",
+      img: "/Final-Web-Images/Images/Company Logos/university of peradeniya.webp",
     },
   ];
 
@@ -48,7 +64,7 @@ export default function TrustSection() {
   useEffect(() => {
     let animationFrameId;
     let scrollPosition = 0;
-    const scrollSpeed = 0.5; // pixels per frame
+    const scrollSpeed = 1.0; // pixels per frame
 
     const animate = () => {
       if (animationRef.current) {
@@ -170,7 +186,7 @@ export default function TrustSection() {
                           : "bg-gray-50 border-gray-100"
                       }`}
                     >
-                      <div className="w-40 h-20 flex items-center justify-center p-4">
+                      <div className="w-40 h-20 flex items-center justify-center p-0">
                         <img
                           src={logo.img}
                           alt={logo.name}
