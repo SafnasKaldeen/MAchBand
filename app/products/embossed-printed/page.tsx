@@ -12,7 +12,7 @@ export default function EmbossedPage() {
         <div className="absolute inset-0 h-screen lg:hidden">
           <Image
             src="/Final-Web-Images/Images/Embossed page/embossed-printed-bracelets.webp"
-            alt="CMYK Full Color Printed Wristbands"
+            alt="Embossed Full Color Printed Wristbands"
             fill
             className="object-cover"
             priority
@@ -24,7 +24,7 @@ export default function EmbossedPage() {
         <div className="hidden lg:block absolute inset-0 h-screen">
           <Image
             src="/Final-Web-Images/Images/Embossed page/emboss-silcon-wristbandlanka.webp"
-            alt="CMYK Full Color Printed Wristbands Desktop"
+            alt="Embossed Full Color Printed Wristbands Desktop"
             fill
             className="object-cover"
             priority
