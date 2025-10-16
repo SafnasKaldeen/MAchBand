@@ -1,0 +1,142 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* 🌞 Light Mode (Default) */
+:root {
+  /* Core brand colors */
+  --visa-blue: #1A1F71;
+  --visa-yellow: #F7B600;
+  --light-grey: #F5F5F5;
+  --medium-grey: #5B5B5B;
+
+  /* Base UI */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: var(--light-grey);
+  --card-foreground: var(--medium-grey);
+  --primary: var(--visa-blue);
+  --primary-foreground: white;
+  --secondary: var(--visa-yellow);
+  --secondary-foreground: oklch(0.145 0 0);
+  --accent: var(--visa-yellow);
+  --accent-foreground: oklch(0.145 0 0);
+  --muted: var(--light-grey);
+  --muted-foreground: var(--medium-grey);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+
+  /* Chart colors (optional) */
+  --chart-1: var(--visa-blue);
+  --chart-2: oklch(0.646 0.222 41.116);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: var(--visa-yellow);
+  --chart-5: oklch(0.769 0.188 70.08);
+
+  /* Other UI constants */
+  --radius: 0.625rem;
+
+  /* Sidebar (if used) */
+  --sidebar: var(--light-grey);
+  --sidebar-foreground: var(--visa-blue);
+  --sidebar-primary: var(--visa-blue);
+  --sidebar-primary-foreground: white;
+  --sidebar-accent: var(--visa-yellow);
+  --sidebar-accent-foreground: oklch(0.145 0 0);
+  --sidebar-border: var(--light-grey);
+  --sidebar-ring: var(--visa-blue);
+}
+
+/* 🌚 Dark Mode */
+.dark {
+  --background: #0B0E29;
+  --foreground: #F5F5F5;
+  --card: #1C1F3A;
+  --card-foreground: #F5F5F5;
+  --primary: #F7B600;
+  --primary-foreground: #0B0E29;
+  --secondary: #1A1F71;
+  --white: #FFFFFF;
+  --visa-blue: #1A1F71;
+  --golden-yellow: #F7B600;
+  --light-grey: #F5F5F5;
+  --secondary-foreground: white;
+  --accent: #F7B600;
+  --accent-foreground: #1A1F71;
+  --muted: #2A2E5A;
+  --muted-foreground: #D0D0D0;
+  --border: #2E3360;
+  --input: #2E3360;
+  --ring: #F7B600;
+
+  /* Charts */
+  --chart-1: #F7B600;
+  --chart-2: #1A1F71;
+  --chart-3: #A0A7FF;
+  --chart-4: #FFD966;
+  --chart-5: #5B5B5B;
+
+  /* Sidebar */
+  --sidebar: #1A1F71;
+  --sidebar-foreground: #F7B600;
+  --sidebar-primary: #F7B600;
+  --sidebar-primary-foreground: #1A1F71;
+  --sidebar-accent: #2A2E5A;
+  --sidebar-accent-foreground: #F7B600;
+  --sidebar-border: #2E3360;
+  --sidebar-ring: #F7B600;
+}
+
+/* 🌐 Tailwind variable mapping */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  /* Charts */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* 🧱 Base styles */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* @layer utilities {
+  .animation-pause {
+    animation-play-state: paused;
+  }
+} */
