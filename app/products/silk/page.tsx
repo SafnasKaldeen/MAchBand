@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { Phone, Mail, MapPin } from "lucide-react";
+import Back from "@/components/Back";
 
 export default function SilkScreenPage() {
   return (
@@ -46,6 +47,8 @@ export default function SilkScreenPage() {
 
         {/* Dark Overlay with Gradient */}
         <div className="absolute inset-0 h-screen bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
+
+        <Back />
 
         {/* Main Content Container */}
         <div className="relative z-10 min-h-screen">
