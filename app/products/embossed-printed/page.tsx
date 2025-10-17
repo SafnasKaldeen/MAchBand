@@ -11,7 +11,7 @@ export default function EmbossedPage() {
         {/* ✅ Mobile Background Image */}
         <div className="absolute inset-0 h-screen lg:hidden">
           <Image
-            src="/Final-Web-Images/Images/Embossed page/embossed-printed-bracelets.webp"
+            src="/Final-Web-Images/Images/Embossed Page/embossed-printed-bracelets.webp"
             alt="Embossed Full Color Printed Wristbands"
             fill
             className="object-cover"
@@ -23,7 +23,7 @@ export default function EmbossedPage() {
         {/* ✅ Desktop Background Image */}
         <div className="hidden lg:block absolute inset-0 h-screen">
           <Image
-            src="/Final-Web-Images/Images/Embossed page/emboss-silcon-wristbandlanka.webp"
+            src="/Final-Web-Images/Images/Embossed Page/emboss-silcon-wristbandlanka.webp"
             alt="Embossed Full Color Printed Wristbands Desktop"
             fill
             className="object-cover"
@@ -36,7 +36,7 @@ export default function EmbossedPage() {
         <div
           className="absolute inset-0 h-screen"
           style={{
-            backgroundImage: `url(/Final-Web-Images/Images/Embossed page/embossed-printed-bracelets.webp)`,
+            backgroundImage: `url(/Final-Web-Images/Images/Embossed Page/embossed-printed-bracelets.webp)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "blur(8px)",
@@ -72,7 +72,7 @@ export default function EmbossedPage() {
                 {/* Image 1 */}
                 <div className="rounded-lg overflow-hidden">
                   <Image
-                    src="/Final-Web-Images/Images/Embossed page/embossed-segmented-wristband.webp"
+                    src="/Final-Web-Images/Images/Embossed Page/embossed-segmented-wristband.webp"
                     alt="Embossed Wristband 1"
                     width={300}
                     height={200}
@@ -83,7 +83,7 @@ export default function EmbossedPage() {
                 {/* Image 2 */}
                 <div className="rounded-lg overflow-hidden">
                   <Image
-                    src="/Final-Web-Images/Images/Embossed page/embossed-custom-silicone-wristbands.webp"
+                    src="/Final-Web-Images/Images/Embossed Page/embossed-custom-silicone-wristbands.webp"
                     alt="Embossed Wristband 2"
                     width={300}
                     height={200}
@@ -94,7 +94,7 @@ export default function EmbossedPage() {
                 {/* Image 3 */}
                 <div className="rounded-lg overflow-hidden">
                   <Image
-                    src="/Final-Web-Images/Images/Embossed page/emboss-rubber-wristbands-srilanka.webp"
+                    src="/Final-Web-Images/Images/Embossed Page/emboss-rubber-wristbands-srilanka.webp"
                     alt="Embossed Wristband 3"
                     width={300}
                     height={200}
@@ -105,7 +105,7 @@ export default function EmbossedPage() {
                 {/* Image 4 */}
                 <div className="rounded-lg overflow-hidden">
                   <Image
-                    src="/Final-Web-Images/Images/Embossed page/embos-silicon-handbands.webp"
+                    src="/Final-Web-Images/Images/Embossed Page/embos-silicon-handbands.webp"
                     alt="Embossed Wristband 4"
                     width={300}
                     height={200}
@@ -145,7 +145,7 @@ export default function EmbossedPage() {
                 <div className="grid grid-cols-4 gap-6 max-w-6xl mb-12">
                   <div className="rounded-xl overflow-hidden">
                     <Image
-                      src="/Final-Web-Images/Images/Embossed page/embossed-segmented-wristband.webp"
+                      src="/Final-Web-Images/Images/Embossed Page/embossed-segmented-wristband.webp"
                       alt="Embossed Wristband 2"
                       width={400}
                       height={300}
@@ -155,7 +155,7 @@ export default function EmbossedPage() {
 
                   <div className="rounded-xl overflow-hidden">
                     <Image
-                      src="/Final-Web-Images/Images/Embossed page/embossed-custom-silicone-wristbands.webp"
+                      src="/Final-Web-Images/Images/Embossed Page/embossed-custom-silicone-wristbands.webp"
                       alt="Embossed Wristband 2"
                       width={400}
                       height={300}
@@ -165,7 +165,7 @@ export default function EmbossedPage() {
 
                   <div className="rounded-xl overflow-hidden">
                     <Image
-                      src="/Final-Web-Images/Images/Embossed page/emboss-rubber-wristbands-srilanka.webp"
+                      src="/Final-Web-Images/Images/Embossed Page/emboss-rubber-wristbands-srilanka.webp"
                       alt="Embossed Wristband 3"
                       width={400}
                       height={300}
@@ -175,7 +175,7 @@ export default function EmbossedPage() {
 
                   <div className="rounded-xl overflow-hidden">
                     <Image
-                      src="/Final-Web-Images/Images/Embossed page/embos-silicon-handbands.webp"
+                      src="/Final-Web-Images/Images/Embossed Page/embos-silicon-handbands.webp"
                       alt="Embossed Wristband 4"
                       width={400}
                       height={300}
@@ -351,7 +351,7 @@ export default function EmbossedPage() {
             <div className="col-span-2 row-span-2 rounded-2xl overflow-hidden">
               <div className="relative w-full h-full min-h-96">
                 <Image
-                  src="/Final-Web-Images/Images/Embossed page/embossed-printed-hand-bands-lanka.webp"
+                  src="/Final-Web-Images/Images/Embossed Page/embossed-printed-hand-bands-lanka.webp"
                   alt="ROLEX Embossed Bands"
                   fill
                   className="object-fill"
@@ -363,7 +363,7 @@ export default function EmbossedPage() {
             <div className="rounded-2xl overflow-hidden">
               <div className="relative w-full h-48">
                 <Image
-                  src="/Final-Web-Images/Images/Embossed page/embossed-segmented-wristband.webp"
+                  src="/Final-Web-Images/Images/Embossed Page/embossed-segmented-wristband.webp"
                   alt="Embossed Wristband 1"
                   fill
                   className="object-fill"
@@ -375,7 +375,7 @@ export default function EmbossedPage() {
             <div className="rounded-2xl overflow-hidden">
               <div className="relative w-full h-48">
                 <Image
-                  src="/Final-Web-Images/Images/Embossed page/embossed-custom-silicone-wristbands.webp"
+                  src="/Final-Web-Images/Images/Embossed Page/embossed-custom-silicone-wristbands.webp"
                   alt="Embossed Rubber Wristbands"
                   fill
                   className="object-fill"
@@ -387,7 +387,7 @@ export default function EmbossedPage() {
             <div className="rounded-2xl overflow-hidden">
               <div className="relative w-full h-48">
                 <Image
-                  src="/Final-Web-Images/Images/Embossed page/embos-silicon-handbands.webp"
+                  src="/Final-Web-Images/Images/Embossed Page/embos-silicon-handbands.webp"
                   alt="Emboss Silicone Wristbands"
                   fill
                   className="object-fill"
@@ -399,7 +399,7 @@ export default function EmbossedPage() {
             <div className="rounded-2xl overflow-hidden">
               <div className="relative w-full h-48">
                 <Image
-                  src="/Final-Web-Images/Images/Embossed page/emboss-rubber-wristbands-srilanka.webp"
+                  src="/Final-Web-Images/Images/Embossed Page/emboss-rubber-wristbands-srilanka.webp"
                   alt="Embossed Rubber Handbands"
                   fill
                   className="object-fill"
@@ -411,7 +411,7 @@ export default function EmbossedPage() {
             <div className="rounded-2xl overflow-hidden">
               <div className="relative w-full h-48">
                 <Image
-                  src="/Final-Web-Images/Images/Embossed page/printed-embossed-bracelet.webp"
+                  src="/Final-Web-Images/Images/Embossed Page/printed-embossed-bracelet.webp"
                   alt="Custom Wristband Sri Lanka"
                   fill
                   className="object-fill"
