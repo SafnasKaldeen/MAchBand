@@ -80,7 +80,7 @@ export default function GallerySlider() {
   }, [galleryImages.length]);
 
   return (
-    <section className="relative overflow-hidden bg-white">
+    <section className="relative overflow-hidden bg-gray-200">
       {/* Header Section */}
       <div className="container mx-auto px-4 mb-16 pt-20">
         <div className="max-w-3xl mx-auto text-center">
@@ -105,8 +105,8 @@ export default function GallerySlider() {
         {/* Image Carousel */}
         <div className="relative">
           {/* Fade overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-gray-200 via-gray-200 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-gray-200 via-gray-200 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-gray-200 via-gray-200 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-gray-200 via-gray-200 to-transparent z-10 pointer-events-none" />
 
           <div className="overflow-hidden">
             <div ref={animationRef} className="flex gap-6 py-4">

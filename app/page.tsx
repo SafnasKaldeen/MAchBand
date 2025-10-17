@@ -15,6 +15,7 @@ import TrustSection from "@/components/TrustSection";
 import GallerySlider from "@/components/GallerySlider";
 import ExportQualitySection from "@/components/ExportQualitySection";
 import FAQSection from "@/components/FAQSection";
+import TrustindexReviews from "@/components/TrustindexReviews";
 
 export default function Home() {
   return (
@@ -171,6 +172,11 @@ export default function Home() {
 
       {/* Trust Section */}
       <TrustSection />
+
+      {/* Reviews Section */}
+      <section id="reviews" className="bg-white mx-0 px-0">
+        <TrustindexReviews />
+      </section>
 
       {/* Gallery Section */}
       <section id="gallery" className="bg-white">
