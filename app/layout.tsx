@@ -71,14 +71,6 @@ export default function RootLayout({
       <head>
         <meta
           name="google-site-verification"
-          content="VxeBOxrzphZuT3IxM9IzD5JoEkE3nmMwjq9kjQuhr9Q"
-        />
-        <meta
-          name="google-site-verification"
-          content="HTf79Ck0A0krKQhu0Z-PEp_GSRgALVQfmS0f4m72HK8"
-        />
-        <meta
-          name="google-site-verification"
           content="sX_3WPpd6TJ3xMwzjv1KpDXu_2CgP0PLjSYbNn_P_Bs"
         />
 
