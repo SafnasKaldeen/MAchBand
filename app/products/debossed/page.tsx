@@ -119,7 +119,7 @@ export default function DebossedPage() {
           </div>
 
           {/* Desktop Layout - Game Profile Style */}
-          <div className="hidden lg:block relative">
+          <div className="hidden lg:block relative h-screen">
             <div className="container mx-auto px-8 pt-8">
               {/* Title Section */}
               <h1 className="text-7xl text-white mb-4 font-bold z-10 leading-tight">
@@ -144,7 +144,7 @@ export default function DebossedPage() {
               {/* Main Content with Images */}
               <div className="flex flex-col mb-8">
                 {/* Image Grid - 4 Images */}
-                <div className="grid grid-cols-4 gap-6 max-w-6xl mb-12">
+                <div className="grid grid-cols-4 gap-6 max-w-6xl mb-6">
                   <div className="rounded-xl overflow-hidden">
                     <Image
                       src="/Final-Web-Images/Images/Debossed page/embossed-rubber-handbands.webp"
