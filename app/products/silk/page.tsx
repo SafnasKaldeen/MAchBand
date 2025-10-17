@@ -46,7 +46,7 @@ export default function SilkScreenPage() {
         ></div>
 
         {/* Dark Overlay with Gradient */}
-        <div className="absolute inset-0 h-screen bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
+        <div className="absolute inset-0 h-screen bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
 
         <Back />
 
