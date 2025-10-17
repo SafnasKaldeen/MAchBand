@@ -80,7 +80,7 @@ export const getSEOTags = ({
       type: "website",
       images: [
         {
-          url: `https://${config.domainName}/images/Mach-Wristband-OG-Logo.png`,
+          url: `/Mach-Wristband-OG-Logo.png`,
           width: 1200,
           height: 630,
           alt: "Best Wristbands in Sri Lanka - Mach Wristbands Colombo",
@@ -92,9 +92,7 @@ export const getSEOTags = ({
       description:
         "Leading supplier of custom wristbands in Sri Lanka. Best prices for events & promotions. Island-wide delivery.",
       card: "summary_large_image",
-      images: [
-        `https://${config.domainName}/images/Mach-Wristband-OG-Logo.png`,
-      ],
+      images: [`/Mach-Wristband-OG-Logo.png`],
     },
 
     // Handle canonicalUrlRelative if provided
