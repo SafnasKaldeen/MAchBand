@@ -135,7 +135,7 @@ export default function EnhancedFAQSection() {
             Custom Silicone Hand Bands Frequently Asked Questions
           </h2>
 
-          <div className="rounded-3xl bg-gradient-to-br from-gray-100 to-gray-200 p-8 shadow-xl">
+          <div className="rounded-3xl">
             {/* Scrollable Container */}
             <div
               className={`space-y-4 overflow-y-auto transition-all duration-500 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 hover:scrollbar-thumb-gray-500 pr-2 ${
