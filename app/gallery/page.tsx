@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Phone, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { galleryImages } from "@/data/galleryImages";
+import Header from "@/components/header";
 
 export default function GalleryPage() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -35,64 +36,7 @@ export default function GalleryPage() {
   return (
     <div className="min-h-screen bg-gray-300">
       {/* Header - Matching Landing Page */}
-      <header className="border-b bg-white sticky top-0 z-40 h-30 px-6">
-        <div className="w-full h-full">
-          <div className="flex items-center justify-between h-full">
-            <div className="flex items-center gap-16">
-              <Link href="/" className="flex items-center">
-                <div className="rounded-full w-26 h-26 flex items-center justify-center border-blue-900/60">
-                  <Image
-                    src="/Mach-Wristband-Logo.png"
-                    alt="Mach Wristbands Logo"
-                    width={40}
-                    height={40}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              </Link>
-              <nav className="hidden md:flex items-center gap-8">
-                <Link href="/" className="text-3xl font-bold text-blue-900">
-                  Home
-                </Link>
-                <Link
-                  href="/#products"
-                  className="text-3xl font-bold text-blue-900"
-                >
-                  Products
-                </Link>
-                <Link
-                  href="/gallery"
-                  className="text-3xl font-bold text-blue-900 underline decoration-amber-300 decoration-4 underline-offset-8"
-                >
-                  Gallery
-                </Link>
-                <Link
-                  href="/about"
-                  className="text-3xl font-bold text-blue-900"
-                >
-                  About Us
-                </Link>
-              </nav>
-            </div>
-            <div className="flex items-center gap-4">
-              <a
-                href="tel:+94704925375"
-                className="hidden md:flex items-center gap-2 text-sm font-medium"
-              >
-                <Phone className="h-4 w-4" />
-                +94 070 492 5375
-              </a>
-              <Link
-                href="https://wa.me/+94704925375"
-                target="_blank"
-                className="inline-block bg-amber-300 font-bold text-black px-5 py-2 rounded-lg shadow-md hover:bg-amber-400 transition-colors"
-              >
-                Get a Quotation
-              </Link>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Gallery Hero */}
       <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
@@ -203,7 +147,7 @@ export default function GalleryPage() {
                   alt={galleryImages[selectedIndex].alt}
                   width={1820}
                   height={1080}
-                  className="max-w-full max-h-[55vh] w-auto h-auto object-contain"
+                  className="max-w-full max-h-[75vh] w-auto h-auto object-contain"
                   quality={100}
                   priority
                   unoptimized
@@ -218,7 +162,7 @@ export default function GalleryPage() {
             </div>
 
             {/* Image Info */}
-            <div className="mt-4 text-center bg-white/5 backdrop-blur-md rounded-2xl px-8 py-4 border border-white/10 shadow-lg">
+            {/* <div className="mt-4 text-center bg-white/5 backdrop-blur-md rounded-2xl px-8 py-4 border border-white/10 shadow-lg">
               <h3 className="text-white text-2xl font-bold mb-2">
                 {galleryImages[selectedIndex].title}
               </h3>
@@ -229,7 +173,7 @@ export default function GalleryPage() {
                 </p>
                 <div className="w-2 h-2 bg-amber-300 rounded-full animate-pulse" />
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Thumbnail Strip */}

@@ -45,7 +45,7 @@ export default function CMYKPage() {
         ></div>
 
         {/* Desktop Layout - Dark Overlay with Gradient */}
-        <div className="absolute inset-0 h-screen bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
+        <div className="absolute inset-0 h-screen bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
 
         {/* Main Content Container */}
         <div className="relative z-10 min-h-screen">

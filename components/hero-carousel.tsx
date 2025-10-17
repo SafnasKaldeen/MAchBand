@@ -113,7 +113,7 @@ export function HeroCarousel() {
       </div>
 
       {/* Navigation Arrows */}
-      <button
+      {/* <button
         onClick={goToPrevious}
         className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-900 rounded-full p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 shadow-lg z-10"
         aria-label="Previous slide"
@@ -126,7 +126,7 @@ export function HeroCarousel() {
         aria-label="Next slide"
       >
         <ChevronRight className="h-6 w-6" />
-      </button>
+      </button> */}
 
       {/* Dot Indicators */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-10">
