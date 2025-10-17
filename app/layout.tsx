@@ -37,6 +37,8 @@ export const metadata = getSEOTags({
   ],
   openGraph: {
     title: "Custom Silicone Wristbands | High-Quality & Affordable",
+    locale: "en_LK",
+    siteName: "Mach Wristbands Sri Lanka",
     description:
       "Order high-quality, custom silicone wristbands in Sri Lanka. Perfect for promotions, events, and fundraisers.",
     images: [
@@ -81,18 +83,42 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": "LocalBusiness",
               name: "Mach Wristbands Sri Lanka",
+              image: "https://machwristbands.lk/Mach-Wristband-Logo.png",
+              "@id": "https://machwristbands.lk",
               url: "https://machwristbands.lk",
-              logo: "https://machwristbands.lk/Mach-Wristband-Logo.png",
-              image: [
-                "https://machwristbands.lk/Mach-Wristband-Logo.png",
-                "https://machwristbands.lk/Mach-Wristband-OG-Logo.png",
-                "https://machwristbands.lk/images/Galary/2-copy.webp",
-                "https://machwristbands.lk/images/Galary/3-copy.webp",
+              telephone: "+94-XXX-XXXXXX", // Add your phone
+              priceRange: "$$",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Your Street",
+                addressLocality: "Colombo",
+                addressRegion: "Western Province",
+                postalCode: "00000",
+                addressCountry: "LK",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 6.9271,
+                longitude: 79.8612,
+              },
+              openingHoursSpecification: {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                ],
+                opens: "09:00",
+                closes: "17:00",
+              },
+              sameAs: [
+                "https://www.facebook.com/yourpage",
+                "https://www.instagram.com/yourpage",
               ],
-              description:
-                "Get premium custom silicone wristbands in Sri Lanka at unbeatable prices! High-quality, personalized rubber wristbands for events, promotions, and more.",
             }),
           }}
         />
@@ -100,9 +126,33 @@ export default function RootLayout({
         {/* Canonical URL */}
         <link rel="canonical" href={`https://machwristbands.lk`} />
 
+        <link rel="alternate" hrefLang="en" href="https://machwristbands.lk" />
+        <link
+          rel="alternate"
+          hrefLang="si"
+          href="https://machwristbands.lk/si"
+        />
+        <link
+          rel="alternate"
+          hrefLang="ta"
+          href="https://machwristbands.lk/ta"
+        />
+
         {/* Site Favicon */}
         <link rel="icon" href="/Mach-Wristband-Logo.png" sizes="any" />
         <link rel="apple-touch-icon" href="/Mach-Wristband-Logo.png" />
+
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+        <link
+          rel="sitemap-images"
+          type="application/xml"
+          href="/sitemap_image.xml"
+        />
+
+        <meta
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        />
 
         {/* Preload Montserrat Font for Faster Loading */}
         <link
