@@ -88,20 +88,20 @@ export default function RootLayout({
               image: "/Mach-Wristband-Logo.png",
               "@id": "https://machwristbands.lk",
               url: "https://machwristbands.lk",
-              telephone: "+94-XXX-XXXXXX", // Add your phone
+              telephone: "+94-070 492 5375", // Add your phone
               priceRange: "$$",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "Your Street",
-                addressLocality: "Colombo",
+                streetAddress: "No. 1, 4 Bandaranayake Mawatha",
+                addressLocality: "Moratuwa",
                 addressRegion: "Western Province",
-                postalCode: "00000",
+                postalCode: "10400",
                 addressCountry: "LK",
               },
               geo: {
                 "@type": "GeoCoordinates",
-                latitude: 6.9271,
-                longitude: 79.8612,
+                latitude: 6.797552468411406,
+                longitude: 79.88887532883668,
               },
               openingHoursSpecification: {
                 "@type": "OpeningHoursSpecification",
@@ -111,13 +111,15 @@ export default function RootLayout({
                   "Wednesday",
                   "Thursday",
                   "Friday",
+                  "Saturday",
+                  "Sunday",
                 ],
-                opens: "09:00",
-                closes: "17:00",
+                opens: "08:00",
+                closes: "19:30",
               },
               sameAs: [
-                "https://www.facebook.com/yourpage",
-                "https://www.instagram.com/yourpage",
+                "https://www.facebook.com/profile.php?id=61560428199706",
+                "https://www.instagram.com/machwristbands_lanka/",
               ],
             }),
           }}
