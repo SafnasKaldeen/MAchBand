@@ -85,7 +85,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               name: "Mach Wristbands Sri Lanka",
-              image: "https://machwristbands.lk/Mach-Wristband-Logo.png",
+              image: "/Mach-Wristband-Logo.png",
               "@id": "https://machwristbands.lk",
               url: "https://machwristbands.lk",
               telephone: "+94-XXX-XXXXXX", // Add your phone
