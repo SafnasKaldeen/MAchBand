@@ -44,31 +44,32 @@ export default function Home() {
               Each style can be customized with a wide range of options
             </p>
           </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {[
               {
-                title: "Debossed",
+                title: "Debossed Ink-Filled",
                 subtitle: "Classic Engraved",
                 image:
                   "/Final-Web-Images/Images/Home-page-Imprint-section/silicon-deboss-wristbands-lanka.webp",
                 href: "/products/debossed",
               },
               {
-                title: "Embossed",
+                title: "Embossed Silicone",
                 subtitle: "Raised & Colorful",
                 image:
                   "/Final-Web-Images/Images/Home-page-Imprint-section/emboss-print-hand-bands.webp",
                 href: "/products/embossed-printed",
               },
               {
-                title: "Screen-printing",
+                title: "Screen Printed",
                 subtitle: "Vibrant & Detailed",
                 image:
                   "/Final-Web-Images/Images/Home-page-Imprint-section/Screen-printed-bangles.webp",
                 href: "/products/silk",
               },
               {
-                title: "CMYK",
+                title: "Full-Color CMYK Printed",
                 subtitle: "Bold Raised Design",
                 image:
                   "/Final-Web-Images/Images/Home-page-Imprint-section/CMYK-full-color-print-bracelets.webp",

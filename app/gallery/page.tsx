@@ -62,11 +62,11 @@ export default function GalleryPage() {
               event giveaways, while charity organizations, blood donation
               drives, and awareness campaigns continue to choose us for durable,
               affordable, and customizable handbands that spread messages and
-              create lasting impact. Our gallery of sample designs reflects the
-              creativity, vibrant colors, and diverse customization options that
-              make Mach Wristbands Lanka the preferred wristband and promotional
-              product supplier for communities, institutions, and businesses
-              nationwide.
+              create lasting impact. General Specification of sample designs
+              reflects the creativity, vibrant colors, and diverse customization
+              options that make Mach Wristbands Lanka the preferred wristband
+              and promotional product supplier for communities, institutions,
+              and businesses nationwide.
             </p>
           </div>
         </div>

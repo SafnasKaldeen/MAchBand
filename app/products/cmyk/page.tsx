@@ -349,7 +349,9 @@ export default function CMYKPage() {
       <section className="bg-gray-200 py-16 px-6 lg:px-8">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-black mb-4">Our Gallery</h2>
+            <h2 className="text-4xl font-bold text-black mb-4">
+              General Specification
+            </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Explore our premium CMYK full color printed wristband collection
               with photorealistic designs
