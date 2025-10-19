@@ -1,41 +1,65 @@
-import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
-import { Phone, Mail, MapPin } from "lucide-react";
-import Back from "@/components/Back";
+"use client";
+
+import { useState, useEffect } from "react";
+import { Phone, MessageCircle } from "lucide-react";
+import Link from "next/link";
+import Header from "@/components/header";
 
 export default function SilkScreenPage() {
+  const [visibleSections, setVisibleSections] = useState(new Set());
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleSections((prev) => new Set([...prev, entry.target.id]));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
+    );
+
+    const sections = document.querySelectorAll("[data-animate]");
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-black">
-      {/* Hero Section - Game Profile Style */}
-      <section className="relative w-full">
-        {/* Background Image with Blur Effect */}
-        {/* ✅ Mobile Background Image */}
-        <div className="absolute inset-0 h-screen lg:hidden">
-          <Image
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <Header />
+
+      {/* Hero Section */}
+      <section
+        className="relative w-full"
+        style={{ height: "calc(100vh - 5rem)" }}
+      >
+        {/* Background Image - Mobile */}
+        <div className="absolute inset-0 lg:hidden">
+          <img
             src="/Final-Web-Images/Images/Screen Print page/bangle-printing-school.webp"
-            alt="CMYK Full Color Printed Wristbands"
-            fill
-            className="object-cover"
-            priority
+            alt="Silk Screen Printed Wristbands"
+            className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90"></div>
         </div>
 
-        {/* ✅ Desktop Background Image */}
-        <div className="hidden lg:block absolute inset-0 h-screen">
-          <Image
+        {/* Background Image - Desktop */}
+        <div className="hidden lg:block absolute inset-0">
+          <img
             src="/Final-Web-Images/Images/Screen Print page/hand-bands-print-sri-lanka.webp"
-            alt="CMYK Full Color Printed Wristbands Desktop"
-            fill
-            className="object-cover"
-            priority
+            alt="Silk Screen Printed Wristbands Desktop"
+            className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
         </div>
 
-        {/* ✅ Blurred Background Layer */}
+        {/* Blur Background Layer */}
         <div
-          className="absolute inset-0 h-screen"
+          className="absolute inset-0"
           style={{
             backgroundImage: `url(/Final-Web-Images/Images/Screen Print page/bangle-printing-school.webp)`,
             backgroundSize: "cover",
@@ -45,90 +69,58 @@ export default function SilkScreenPage() {
           }}
         ></div>
 
-        {/* Dark Overlay with Gradient */}
-        <div className="absolute inset-0 h-screen bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
 
-        <Back />
-
-        {/* Main Content Container */}
-        <div className="relative z-10 min-h-screen">
+        {/* Content */}
+        <div className="relative z-10 h-full flex flex-col justify-center">
           {/* Mobile Layout */}
           <div className="block lg:hidden">
-            <div className="container mx-auto px-6 pt-4 pb-4">
-              {/* Text Content */}
-              <div className="max-w-3xl mb-12">
-                <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-white">
+            <div className="container mx-auto px-6">
+              <div className="max-w-3xl mb-8 animate-fade-in">
+                <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-white animate-slide-up">
                   SILK SCREEN PRINTED WRISTBANDS
                 </h1>
-                <p className="text-lg md:text-xl mb-4 text-gray-200">
+                <p className="text-lg md:text-xl mb-4 text-gray-200 animate-slide-up animation-delay-200">
                   Your design is printed directly onto the silicone surface
                   using a precise silk screen process.
                 </p>
-                <p className="text-2xl md:text-3xl font-bold text-purple-300 mb-4">
+                <p className="text-2xl md:text-3xl font-bold text-purple-300 mb-8 animate-slide-up animation-delay-400">
                   The Versatile Choice – Perfect for detailed designs.
                 </p>
               </div>
 
-              {/* Image Grid - 4 Images */}
-              <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
-                {/* Image 1 */}
-                <div className="rounded-lg overflow-hidden">
-                  <Image
-                    src="/Final-Web-Images/Images/Screen Print page/printed-wristbands-near-me.webp"
-                    alt="Silk Screen Wristband 1"
-                    width={300}
-                    height={200}
-                    className="w-full h-32 object-contain hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                {/* Image 2 */}
-                <div className="rounded-lg overflow-hidden">
-                  <Image
-                    src="/Final-Web-Images/Images/Screen Print page/rubber-hand-bands-printed.webp"
-                    alt="Silk Screen Wristband 2"
-                    width={300}
-                    height={200}
-                    className="w-full h-32 object-contain hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                {/* Image 3 */}
-                <div className="rounded-lg overflow-hidden">
-                  <Image
-                    src="/Final-Web-Images/Images/Screen Print page/identification-wristbands-for-mas-holdings.webp"
-                    alt="Silk Screen Wristband 3"
-                    width={300}
-                    height={200}
-                    className="w-full h-32 object-contain hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                {/* Image 4 */}
-                <div className="rounded-lg overflow-hidden">
-                  <Image
-                    src="/Final-Web-Images/Images/Screen Print page/qr-wrist-bracelets-srilanka.webp"
-                    alt="Silk Screen Wristband 4"
-                    width={300}
-                    height={200}
-                    className="w-full h-32 object-contain hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
+              <div className="grid grid-cols-2 gap-3 max-w-4xl mx-auto">
+                {[
+                  "printed-wristbands-near-me",
+                  "rubber-hand-bands-printed",
+                  "identification-wristbands-for-mas-holdings",
+                  "qr-wrist-bracelets-srilanka",
+                ].map((img, i) => (
+                  <div
+                    key={i}
+                    className="rounded-lg overflow-hidden animate-scale-in bg-white/10 backdrop-blur-sm p-2"
+                    style={{ animationDelay: `${i * 100}ms` }}
+                  >
+                    <img
+                      src={`/Final-Web-Images/Images/Screen Print page/${img}.webp`}
+                      alt={`Silk Screen Wristband ${i}`}
+                      className="w-full h-20 object-contain hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Desktop Layout - Game Profile Style */}
-          <div className="hidden lg:block relative h-screen">
-            <div className="container mx-auto px-8 pt-8">
-              {/* Title Section */}
-              <h1 className="text-7xl text-white mb-4 font-bold z-10 leading-tight">
+          {/* Desktop Layout */}
+          <div className="hidden lg:block">
+            <div className="container mx-auto px-8">
+              <h1 className="text-6xl text-white mb-6 font-bold leading-tight animate-slide-up">
                 SILK SCREEN PRINTED WRISTBANDS
               </h1>
 
-              {/* Info Badges */}
-              <div className="flex flex-row items-center mb-8">
-                <span className="flex flex-col ml-3 badge p-5 bg-gray-800/50 backdrop-blur-sm text-white rounded-lg">
+              <div className="flex flex-row items-center mb-8 animate-slide-up animation-delay-200">
+                <span className="flex flex-col badge p-5 bg-gray-800/50 backdrop-blur-sm text-white rounded-lg">
                   <span className="text-xl font-semibold">
                     Silicone Material
                   </span>
@@ -141,65 +133,40 @@ export default function SilkScreenPage() {
                 </span>
               </div>
 
-              {/* Main Content with Images */}
-              <div className="flex flex-col mb-8">
-                {/* Image Grid - 4 Images */}
-                <div className="grid grid-cols-4 gap-6 max-w-6xl mb-6">
-                  <div className="rounded-xl overflow-hidden">
-                    <Image
-                      src="/Final-Web-Images/Images/Screen Print page/printed-bracelets-for-ndb-bank.webp"
-                      alt="Silk Screen Wristband 1"
-                      width={400}
-                      height={300}
-                      className="w-full h-48 object-contain hover:scale-110 transition-transform duration-500"
+              <div className="grid grid-cols-5 gap-4 max-w-6xl mb-8">
+                {[
+                  "printed-wristbands-near-me",
+                  "rubber-hand-bands-printed",
+                  "identification-wristbands-for-mas-holdings",
+                  "qr-wrist-bracelets-srilanka",
+                  "screen-print-rubber-bands-srilanka",
+                ].map((img, i) => (
+                  <div
+                    key={i}
+                    className="overflow-hidden animate-scale-in bg-white/10 backdrop-blur-sm py-0 my-0"
+                    style={{ animationDelay: `${400 + i * 100}ms` }}
+                  >
+                    <img
+                      src={`/Final-Web-Images/Images/Screen Print page/${img}.webp`}
+                      alt={`Silk Screen Wristband ${i}`}
+                      className="w-full h-40 object-contain hover:scale-110 transition-transform duration-500"
                     />
                   </div>
+                ))}
+              </div>
 
-                  <div className="rounded-xl overflow-hidden">
-                    <Image
-                      src="/Final-Web-Images/Images/Screen Print page/rubber-hand-bands-printed.webp"
-                      alt="Silk Screen Wristband 2"
-                      width={400}
-                      height={300}
-                      className="w-full h-48 object-contain hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-
-                  <div className="rounded-xl overflow-hidden">
-                    <Image
-                      src="/Final-Web-Images/Images/Screen Print page/identification-wristbands-for-mas-holdings.webp"
-                      alt="Silk Screen Wristband 3"
-                      width={400}
-                      height={300}
-                      className="w-full h-48 object-contain hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-
-                  <div className="rounded-xl overflow-hidden">
-                    <Image
-                      src="/Final-Web-Images/Images/Screen Print page/qr-wrist-bracelets-srilanka.webp"
-                      alt="Silk Screen Wristband 4"
-                      width={400}
-                      height={300}
-                      className="w-full h-48 object-contain hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                </div>
-
-                {/* Description */}
-                <div className="max-w-4xl">
-                  <h2 className="text-3xl text-white font-bold mb-6 hover:opacity-80 transition-opacity">
-                    Product Description
-                  </h2>
-                  <div className="text-white text-lg mb-6 leading-relaxed">
-                    <p className="text-xl mb-4 text-gray-200">
-                      Your design is printed directly onto the silicone surface
-                      using a precise silk screen process.
-                    </p>
-                    <p className="text-2xl font-bold text-purple-300 mb-6">
-                      The Versatile Choice – Perfect for detailed designs.
-                    </p>
-                  </div>
+              <div className="max-w-4xl animate-slide-up animation-delay-900">
+                <h2 className="text-3xl text-white font-bold mb-4">
+                  Product Description
+                </h2>
+                <div className="text-white text-lg leading-relaxed">
+                  <p className="text-xl mb-3 text-gray-200">
+                    Your design is printed directly onto the silicone surface
+                    using a precise silk screen process.
+                  </p>
+                  <p className="text-2xl font-bold text-purple-300">
+                    The Versatile Choice – Perfect for detailed designs.
+                  </p>
                 </div>
               </div>
             </div>
@@ -208,240 +175,616 @@ export default function SilkScreenPage() {
       </section>
 
       {/* What is Silk Screen Printing */}
-      <section className="bg-gray-50 py-16 px-6 lg:px-8">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold mb-8 text-gray-900">
-            What is Silk Screen Printing?
+      <section
+        id="silkscreen-info"
+        data-animate
+        className={`bg-white py-20 px-6 lg:px-8 transition-all duration-1000 ${
+          visibleSections.has("silkscreen-info")
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-20"
+        }`}
+      >
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-gray-900">
+              What is Silk Screen Printing?
+            </h2>
+            <div className="w-16 h-1 bg-purple-500 mx-auto"></div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-gray-50 rounded-lg p-8 border border-gray-200 hover:border-purple-300 transition-colors">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Direct Printing
+              </h3>
+              <p className="text-gray-700">
+                Design is printed flat onto the silicone surface using
+                high-quality silicone ink.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-8 border border-gray-200 hover:border-purple-300 transition-colors">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Flexible & Durable
+              </h3>
+              <p className="text-gray-700">
+                Printed ink stretches with the band and won't crack, peel, or
+                fade.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-8 border border-gray-200 hover:border-purple-300 transition-colors">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Multi-Color Support
+              </h3>
+              <p className="text-gray-700">
+                Supports multiple ink colors for complex logos and detailed
+                artwork.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Width Options */}
+      <section
+        id="width-section"
+        data-animate
+        className={`bg-gray-100 py-16 px-6 lg:px-8 transition-all duration-1000 ${
+          visibleSections.has("width-section")
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-20"
+        }`}
+      >
+        <div className="container mx-auto max-w-5xl">
+          <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">
+            Available Wristband Widths
           </h2>
-          <div className="space-y-4 text-lg text-gray-700">
-            <p>
-              Designs are applied flat onto the silicone surface using durable,
-              high-quality silicone ink.
+
+          <div className="bg-white rounded-lg shadow overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-gray-800">
+                  <tr>
+                    <th className="px-6 py-4 text-left text-white font-bold">
+                      Width Options
+                    </th>
+                    <th className="px-6 py-4 text-center text-white font-bold">
+                      25 mm
+                    </th>
+                    <th className="px-6 py-4 text-center text-white font-bold">
+                      20 mm
+                    </th>
+                    <th className="px-6 py-4 text-center text-white font-bold">
+                      15 mm
+                    </th>
+                    <th className="px-6 py-4 text-center text-white font-bold bg-purple-600">
+                      12 mm
+                    </th>
+                    <th className="px-6 py-4 text-center text-white font-bold">
+                      6 mm
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-t">
+                    <td className="px-6 py-6 font-semibold text-gray-700">
+                      Available Sizes
+                    </td>
+                    <td className="px-6 py-6 text-center text-gray-600">✓</td>
+                    <td className="px-6 py-6 text-center text-gray-600">✓</td>
+                    <td className="px-6 py-6 text-center text-gray-600">✓</td>
+                    <td className="px-6 py-6 text-center bg-purple-50 font-bold text-purple-700">
+                      ✓ Most Popular
+                    </td>
+                    <td className="px-6 py-6 text-center text-gray-600">✓</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="mt-8 text-center bg-purple-50 rounded-lg p-6 border border-purple-200">
+            <p className="text-lg font-semibold text-purple-900">
+              The standard width ordered by 80% of our customers is 12 mm
             </p>
-            <p>
-              The printed ink stretches with the wristband, so your logos, text,
-              or artwork won't crack, peel, or fade even when the band is
-              stretched.
+          </div>
+        </div>
+      </section>
+
+      {/* Quality Section */}
+      <section
+        id="quality-section"
+        data-animate
+        className={`bg-white py-16 px-6 lg:px-8 transition-all duration-1000 ${
+          visibleSections.has("quality-section")
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-20"
+        }`}
+      >
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-gray-900">
+              Our bands are made from 100% silicone and are the best quality you
+              will find
+            </h2>
+            <p className="text-xl text-gray-600">
+              High quality Printed, Debossed and Embossed Wristbands - We assure
+              superior quality
             </p>
-            <p>
-              Supports multiple ink colors, making it ideal for complex logos,
-              detailed artwork, or vibrant multi-color designs.
-            </p>
-            <p>
-              Perfect for short to medium-term use with crisp, high-contrast
-              visuals.
+          </div>
+
+          <div className="bg-gray-50 rounded-lg p-8 mb-8">
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Our Silicone wristbands are a great and relatively inexpensive
+              product that can be used as handouts for events, fundraisers,
+              awareness campaigns, and promotional activities.
             </p>
           </div>
         </div>
       </section>
 
       {/* Customization Options */}
-      <section className="bg-white py-16 px-6 lg:px-8">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold mb-8 text-gray-900">
-            Customization Options
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8 text-gray-700">
-            <div className="space-y-4">
-              <div>
-                <h3 className="font-bold text-lg text-purple-600 mb-2">
-                  Widths:
-                </h3>
-                <p>6 mm, 12 mm (most popular), 15 mm, 20 mm, 25 mm</p>
-              </div>
+      <section
+        id="customization"
+        data-animate
+        className={`bg-gray-100 py-20 px-6 lg:px-8 transition-all duration-1000 ${
+          visibleSections.has("customization")
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-20"
+        }`}
+      >
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-3">
+              Customization Options
+            </h2>
+            <div className="w-16 h-1 bg-purple-500"></div>
+            <p className="text-lg text-gray-600 mt-4">
+              Tailor your wristbands to your exact specifications
+            </p>
+          </div>
 
-              <div>
-                <h3 className="font-bold text-lg text-purple-600 mb-2">
-                  Sizes:
-                </h3>
-                <p>160 mm, 180 mm, 190 mm, 202 mm, 210 mm</p>
-              </div>
-
-              <div>
-                <h3 className="font-bold text-lg text-purple-600 mb-2">
-                  Band Colors:
-                </h3>
-                <p>
-                  Solid, segmented (2–5 colors), swirl, glow-in-the-dark (radium
-                  effect)
-                </p>
-              </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div className="border border-gray-200 rounded-lg p-8 hover:border-purple-300 hover:shadow-md transition-all bg-white">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                Widths
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  "6 mm",
+                  "12 mm (Most Popular)",
+                  "15 mm",
+                  "20 mm",
+                  "25 mm",
+                ].map((width) => (
+                  <li key={width} className="text-gray-700 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-3"></span>
+                    {width}
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="space-y-4">
-              <div>
-                <h3 className="font-bold text-lg text-purple-600 mb-2">
-                  Ink Colors:
-                </h3>
-                <p>2200+ Pantone-matched shades</p>
-              </div>
+            <div className="border border-gray-200 rounded-lg p-8 hover:border-purple-300 hover:shadow-md transition-all bg-white">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                Sizes
+              </h3>
+              <ul className="space-y-3">
+                {["160 mm", "180 mm", "190 mm", "202 mm", "210 mm"].map(
+                  (size) => (
+                    <li key={size} className="text-gray-700 flex items-center">
+                      <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-3"></span>
+                      {size}
+                    </li>
+                  )
+                )}
+              </ul>
+            </div>
 
-              <div>
-                <h3 className="font-bold text-lg text-purple-600 mb-2">
-                  Special Effects:
-                </h3>
-                <p>Figured Watch Style, QR/barcodes, adjustable snap-buttons</p>
-              </div>
+            <div className="border border-gray-200 rounded-lg p-8 hover:border-purple-300 hover:shadow-md transition-all bg-white">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                Band Colors
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  "Solid",
+                  "Segmented (4-5 colors)",
+                  "Swirl",
+                  "Glow-in-the-dark",
+                ].map((color) => (
+                  <li key={color} className="text-gray-700 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-3"></span>
+                    {color}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-8 hover:border-purple-300 hover:shadow-md transition-all bg-white">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                Ink Colors
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Choose from thousands of pantone matched shades
+              </p>
+              <p className="text-3xl font-bold text-purple-600">2200+</p>
+              <p className="text-sm text-gray-500 mt-2">Pantone Colors</p>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-8 hover:border-purple-300 hover:shadow-md transition-all bg-white">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                Special Effects
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  "Figured watch style",
+                  "QR/Barcodes",
+                  "Adjustable snap-buttons",
+                ].map((effect) => (
+                  <li key={effect} className="text-gray-700 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-3"></span>
+                    {effect}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-8 hover:border-purple-300 hover:shadow-md transition-all bg-white">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                Material
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  "100% Silicone",
+                  "Hypoallergenic",
+                  "Latex-free",
+                  "Eco-friendly",
+                ].map((material) => (
+                  <li
+                    key={material}
+                    className="text-gray-700 flex items-center"
+                  >
+                    <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-3"></span>
+                    {material}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
       {/* Product Characteristics */}
-      <section className="bg-gray-50 py-16 px-6 lg:px-8">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold mb-8 text-gray-900">
-            Product Characteristics
-          </h2>
-          <div className="space-y-4 text-lg text-gray-700">
-            <p>
-              • Made from 100% silicone (latex-free, hypoallergenic,
-              eco-friendly)
+      <section
+        id="characteristics"
+        data-animate
+        className={`bg-white py-20 px-6 lg:px-8 transition-all duration-1000 ${
+          visibleSections.has("characteristics")
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-20"
+        }`}
+      >
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-3">
+              Product Characteristics
+            </h2>
+            <div className="w-16 h-1 bg-purple-500 mx-auto"></div>
+            <p className="text-xl text-gray-600 mt-4">
+              Premium quality features that set us apart
             </p>
-            <p>
-              • Durable & waterproof – withstands daily wear and outdoor events
-            </p>
-            <p>
-              • Flat printed design ensures smooth, bold, and readable graphics
-            </p>
-            <p>• High-contrast ink creates vibrant logos and text</p>
-            <p>• Comfortable fit – soft, flexible, and suitable for all ages</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: "100% Silicone",
+                desc: "Latex-free, hypoallergenic & eco-friendly material",
+              },
+              {
+                title: "Durable & Waterproof",
+                desc: "Built to last through any conditions",
+              },
+              {
+                title: "Flat Design",
+                desc: "Sleek, smooth surface with bold printed graphics",
+              },
+              {
+                title: "Multi-Color",
+                desc: "Supports multiple ink colors for complex designs",
+              },
+            ].map((char, i) => (
+              <div
+                key={i}
+                className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center hover:border-purple-300 transition-colors"
+              >
+                <h3 className="text-lg font-bold text-gray-900 mb-3">
+                  {char.title}
+                </h3>
+                <p className="text-gray-600 text-sm">{char.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Advantages & Disadvantages */}
-      <section className="bg-white py-16 px-6 lg:px-8">
+      <section
+        id="advantages"
+        data-animate
+        className={`bg-gray-100 py-20 px-6 lg:px-8 transition-all duration-1000 ${
+          visibleSections.has("advantages")
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-20"
+        }`}
+      >
         <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Advantages */}
-            <div>
-              <h2 className="text-3xl font-bold mb-8 text-gray-900">
-                Advantages
-              </h2>
-              <div className="space-y-4 text-lg text-gray-700">
-                <p>
-                  • Supports multiple ink colors, allowing for complex and
-                  detailed designs
-                </p>
-                <p>
-                  • Cost-effective for single color designs, making it ideal for
-                  simple logos or text
-                </p>
-                <p>
-                  • Quick production times, suitable for events with tight
-                  deadlines
-                </p>
-                <p>• Flat surface provides a sleek and modern appearance</p>
-              </div>
-            </div>
-
-            {/* Disadvantages */}
-            <div>
-              <h2 className="text-3xl font-bold mb-8 text-gray-900">
-                Disadvantages
-              </h2>
-              <div className="space-y-4 text-lg text-gray-700">
-                <p>• Higher cost per unit when using multiple ink colors</p>
-                <p>
-                  • Ink may fade or scratch with extended use, particularly on
-                  flat surfaces
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Improved Gallery Section */}
-      <section className="bg-gray-200 py-16 px-6 lg:px-8">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-black mb-4">
-              General Specification
+          <div className="mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-3">
+              Advantages & Considerations
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Explore our premium Silk Screen Printed wristband collection with
-              detailed, vibrant designs
+            <div className="w-16 h-1 bg-purple-500"></div>
+            <p className="text-lg text-gray-600 mt-4">
+              Make an informed decision about silk screen printed wristbands
             </p>
           </div>
 
-          {/* 3x3 Grid with 2x2 featured image */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
-            {/* Large Featured Image - 2x2 */}
-            <div className="col-span-2 row-span-2 rounded-2xl overflow-hidden">
-              <div className="relative w-full h-full min-h-96">
-                <Image
-                  src="/Final-Web-Images/Images/Screen Print page/printed-wristbands-near-me.webp"
-                  alt="Silk Screen Printed Wristbands"
-                  fill
-                  className="object-fill"
-                />
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div className="border-l-4 border-purple-500 bg-white rounded-lg p-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-8">
+                Advantages
+              </h3>
+              <div className="space-y-6">
+                {[
+                  {
+                    title: "Multi-Color Support",
+                    desc: "Allows for complex and detailed designs with multiple ink colors",
+                  },
+                  {
+                    title: "Cost-Effective",
+                    desc: "Great pricing for single-color designs, ideal for simple logos or text",
+                  },
+                  {
+                    title: "Quick Production",
+                    desc: "Fast turnaround times, suitable for events with tight deadlines",
+                  },
+                  {
+                    title: "Sleek Appearance",
+                    desc: "Flat surface provides a modern, professional look",
+                  },
+                ].map((item, i) => (
+                  <div key={i}>
+                    <h4 className="font-semibold text-gray-900 mb-2">
+                      {item.title}
+                    </h4>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Small Image 1 */}
-            <div className="rounded-2xl overflow-hidden">
-              <div className="relative w-full h-48">
-                <Image
-                  src="/Final-Web-Images/Images/Screen Print page/printed-bracelets-for-ndb-bank.webp"
-                  alt="Silk Screen Wristband 1"
-                  fill
-                  className="object-fill"
-                />
+            <div className="border-l-4 border-gray-400 bg-white rounded-lg p-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-8">
+                Considerations
+              </h3>
+              <div className="space-y-6">
+                {[
+                  {
+                    title: "Multi-Color Cost",
+                    desc: "Higher cost per unit when using multiple ink colors",
+                  },
+                  {
+                    title: "Ink Durability",
+                    desc: "Ink may fade or scratch with extended use, particularly on flat surfaces",
+                  },
+                ].map((item, i) => (
+                  <div key={i}>
+                    <h4 className="font-semibold text-gray-900 mb-2">
+                      {item.title}
+                    </h4>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
               </div>
-            </div>
 
-            {/* Small Image 2 */}
-            <div className="rounded-2xl overflow-hidden">
-              <div className="relative w-full h-48">
-                <Image
-                  src="/Final-Web-Images/Images/Screen Print page/rubber-hand-bands-printed.webp"
-                  alt="Silk Screen Rubber Wristbands"
-                  fill
-                  className="object-fill"
-                />
-              </div>
-            </div>
-
-            {/* Small Image 3 */}
-            <div className="rounded-2xl overflow-hidden">
-              <div className="relative w-full h-48">
-                <Image
-                  src="/Final-Web-Images/Images/Screen Print page/identification-wristbands-for-mas-holdings.webp"
-                  alt="Silk Screen Silicone Wristbands"
-                  fill
-                  className="object-fill"
-                />
-              </div>
-            </div>
-
-            {/* Small Image 4 */}
-            <div className="rounded-2xl overflow-hidden">
-              <div className="relative w-full h-48">
-                <Image
-                  src="/Final-Web-Images/Images/Screen Print page/qr-wrist-bracelets-srilanka.webp"
-                  alt="Silk Screen Printed Handbands"
-                  fill
-                  className="object-fill"
-                />
-              </div>
-            </div>
-
-            {/* Small Image 5 */}
-            <div className="rounded-2xl overflow-hidden">
-              <div className="relative w-full h-48">
-                <Image
-                  src="/Final-Web-Images/Images/Screen Print page/screen-print-rubber-bands-srilanka.webp"
-                  alt="Custom Silk Screen Wristband Sri Lanka"
-                  fill
-                  className="object-fill"
-                />
+              <div className="mt-8 p-4 bg-gray-50 border border-gray-200 rounded">
+                <p className="text-sm text-gray-700">
+                  <span className="font-semibold">Pro Tip:</span> Silk screen
+                  printing is ideal for vibrant, detailed designs with tight
+                  deadlines and flexible production requirements.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Gallery Section */}
+      <section
+        id="gallery"
+        data-animate
+        className={`bg-white py-20 px-6 lg:px-8 transition-all duration-1000 ${
+          visibleSections.has("gallery")
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-20"
+        }`}
+      >
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-3">
+              General Specification
+            </h2>
+
+            <div className="w-16 h-1 bg-purple-500 mx-auto mb-4"></div>
+            <p className="text-xl text-gray-600">
+              Tons of Customization options to make your wristbands truly
+              one-of-a-kind
+            </p>
+            <p className="text-sm pt-6 text-gray-600">
+              Share your idea with us - We'll craft the perfect design that fits
+              your purpose, with unmatched quality and finish
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto mb-12">
+            {/* Main Featured Image */}
+            <div className="relative w-full mb-6">
+              <div
+                className="rounded-lg shadow-lg border-4 border-purple-500 cursor-pointer group w-full"
+                onClick={() =>
+                  setSelectedImage(
+                    "/Final-Web-Images/Images/Screen Print page/printed-wristbands-near-me.webp"
+                  )
+                }
+              >
+                <img
+                  src="/Final-Web-Images/Images/Screen Print page/printed-wristbands-near-me.webp"
+                  alt="Silk Screen Printed Bands"
+                  className="w-full h-auto object-contain group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+            </div>
+
+            {/* Thumbnails Row */}
+            <div className="flex gap-4">
+              {[
+                "printed-bracelets-for-ndb-bank",
+                "rubber-hand-bands-printed",
+                "identification-wristbands-for-mas-holdings",
+                "qr-wrist-bracelets-srilanka",
+                "screen-print-rubber-bands-srilanka",
+              ].map((img, i) => (
+                <div
+                  key={i}
+                  className="rounded-lg overflow-hidden shadow cursor-pointer group flex-1 border-4 border-gray-200 hover:border-purple-500 transition-colors"
+                  onClick={() =>
+                    setSelectedImage(
+                      `/Final-Web-Images/Images/Screen Print page/${img}.webp`
+                    )
+                  }
+                >
+                  <img
+                    src={`/Final-Web-Images/Images/Screen Print page/${img}.webp`}
+                    alt={`Wristband ${i}`}
+                    className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Modal for Enlarged Image */}
+          {selectedImage && (
+            <div
+              className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+              onClick={() => setSelectedImage(null)}
+            >
+              <button
+                className="absolute top-6 right-6 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center font-bold hover:bg-gray-200 transition-colors"
+                onClick={() => setSelectedImage(null)}
+              >
+                ✕
+              </button>
+              <img
+                src={selectedImage}
+                alt="Enlarged view"
+                className="max-w-4xl max-h-[80vh] rounded-lg object-contain"
+              />
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Contact CTA */}
+      <section className="bg-purple-600 py-16 px-6 lg:px-8">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h2 className="text-4xl font-bold text-white mb-6">
+            Ready to Order Your Custom Wristbands?
+          </h2>
+          <p className="text-lg text-purple-50 mb-8">
+            Get in touch with us today for a custom quote
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="tel:+940704925375"
+              className="inline-flex items-center justify-center gap-2 bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+            >
+              <Phone className="w-5 h-5" />
+              Call Us
+            </a>
+            <a
+              href="https://wa.me/940704925375"
+              className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors"
+            >
+              <MessageCircle className="w-5 h-5" />
+              WhatsApp Us
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <style jsx>{`
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .animate-slide-up {
+          animation: slideUp 0.8s ease-out forwards;
+        }
+
+        .animate-scale-in {
+          animation: scaleIn 0.6s ease-out forwards;
+          opacity: 0;
+        }
+
+        .animate-fade-in {
+          animation: fadeIn 1s ease-out forwards;
+        }
+
+        .animation-delay-200 {
+          animation-delay: 200ms;
+        }
+
+        .animation-delay-400 {
+          animation-delay: 400ms;
+        }
+
+        .animation-delay-900 {
+          animation-delay: 900ms;
+        }
+      `}</style>
     </div>
   );
 }

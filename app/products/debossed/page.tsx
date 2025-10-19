@@ -1,41 +1,65 @@
-import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
-import { Phone, Mail, MapPin } from "lucide-react";
-import Back from "@/components/Back";
+"use client";
+
+import { useState, useEffect } from "react";
+import { Phone, MessageCircle } from "lucide-react";
+import Link from "next/link";
+import Header from "@/components/header";
 
 export default function DebossedPage() {
+  const [visibleSections, setVisibleSections] = useState(new Set());
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleSections((prev) => new Set([...prev, entry.target.id]));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
+    );
+
+    const sections = document.querySelectorAll("[data-animate]");
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-black">
-      {/* Hero Section - Game Profile Style */}
-      <section className="relative w-full">
-        {/* Background Image with Blur Effect */}
-        {/* ✅ Mobile Background Image */}
-        <div className="absolute inset-0 h-screen lg:hidden">
-          <Image
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <Header />
+
+      {/* Hero Section */}
+      <section
+        className="relative w-full"
+        style={{ height: "calc(100vh - 5rem)" }}
+      >
+        {/* Background Image - Mobile */}
+        <div className="absolute inset-0 lg:hidden">
+          <img
             src="/Final-Web-Images/Images/Debossed page/debossed-handbands-printing-lanka.webp"
-            alt="CMYK Full Color Printed Wristbands"
-            fill
-            className="object-cover"
-            priority
+            alt="Debossed Ink Filled Wristbands"
+            className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90"></div>
         </div>
 
-        {/* ✅ Desktop Background Image */}
-        <div className="hidden lg:block absolute inset-0 h-screen">
-          <Image
+        {/* Background Image - Desktop */}
+        <div className="hidden lg:block absolute inset-0">
+          <img
             src="/Final-Web-Images/Images/Debossed page/deboss-silicon-wristband-price.webp"
-            alt="CMYK Full Color Printed Wristbands Desktop"
-            fill
-            className="object-cover"
-            priority
+            alt="Debossed Ink Filled Wristbands Desktop"
+            className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
         </div>
 
-        {/* ✅ Blurred Background Layer */}
+        {/* Blur Background Layer */}
         <div
-          className="absolute inset-0 h-screen"
+          className="absolute inset-0"
           style={{
             backgroundImage: `url(/Final-Web-Images/Images/Debossed page/debossed-handbands-printing-lanka.webp)`,
             backgroundSize: "cover",
@@ -45,90 +69,58 @@ export default function DebossedPage() {
           }}
         ></div>
 
-        {/* Dark Overlay with Gradient */}
-        <div className="absolute inset-0 h-screen bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
 
-        <Back />
-
-        {/* Main Content Container */}
-        <div className="relative z-10 min-h-screen">
+        {/* Content */}
+        <div className="relative z-10 h-full flex flex-col justify-center">
           {/* Mobile Layout */}
           <div className="block lg:hidden">
-            <div className="container mx-auto px-6 pt-4 pb-4">
-              {/* Text Content */}
-              <div className="max-w-3xl mb-12">
-                <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-white">
-                  DEBOSSED/ENGRAVED & INK FILLED WRISTBANDS
+            <div className="container mx-auto px-6">
+              <div className="max-w-3xl mb-8 animate-fade-in">
+                <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-white animate-slide-up">
+                  DEBOSSED & INK FILLED WRISTBANDS
                 </h1>
-                <p className="text-lg md:text-xl mb-4 text-gray-200">
-                  Your design is engraved into the band and then filled with
-                  vibrant, colorful finish.
+                <p className="text-lg md:text-xl mb-4 text-gray-200 animate-slide-up animation-delay-200">
+                  Your design is engraved into the band and filled with vibrant
+                  ink, creating a classic look with premium appeal.
                 </p>
-                <p className="text-2xl md:text-3xl font-bold text-green-300 mb-8">
-                  The Classic – Our Most Popular
+                <p className="text-2xl md:text-3xl font-bold text-green-300 mb-8 animate-slide-up animation-delay-400">
+                  The Classic Choice – Our Most Popular Style.
                 </p>
               </div>
 
-              {/* Image Grid - 4 Images */}
-              <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
-                {/* Image 1 */}
-                <div className="rounded-lg overflow-hidden">
-                  <Image
-                    src="/Final-Web-Images/Images/Debossed page/embossed-rubber-handbands.webp"
-                    alt="Debossed Wristband 1"
-                    width={300}
-                    height={200}
-                    className="w-full h-32 object-contain hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                {/* Image 2 */}
-                <div className="rounded-lg overflow-hidden">
-                  <Image
-                    src="/Final-Web-Images/Images/Debossed page/1 inch-silicon-wristband-debossed.webp"
-                    alt="Debossed Wristband 2"
-                    width={300}
-                    height={200}
-                    className="w-full h-32 object-contain hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                {/* Image 3 */}
-                <div className="rounded-lg overflow-hidden">
-                  <Image
-                    src="/Final-Web-Images/Images/Debossed page/debossed-rubber-wristbands.webp"
-                    alt="Debossed Wristband 3"
-                    width={300}
-                    height={200}
-                    className="w-full h-32 object-contain hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                {/* Image 4 */}
-                <div className="rounded-lg overflow-hidden">
-                  <Image
-                    src="/Final-Web-Images/Images/Debossed page/emboss-silicone-wristbands.webp"
-                    alt="Debossed Wristband 4"
-                    width={300}
-                    height={200}
-                    className="w-full h-32 object-contain hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
+              <div className="grid grid-cols-2 gap-3 max-w-4xl mx-auto">
+                {[
+                  "embossed-rubber-handbands",
+                  "1 inch-silicon-wristband-debossed",
+                  "debossed-rubber-wristbands",
+                  "emboss-silicone-wristbands",
+                ].map((img, i) => (
+                  <div
+                    key={i}
+                    className="rounded-lg overflow-hidden animate-scale-in bg-white/10 backdrop-blur-sm p-2"
+                    style={{ animationDelay: `${i * 100}ms` }}
+                  >
+                    <img
+                      src={`/Final-Web-Images/Images/Debossed page/${img}.webp`}
+                      alt={`Debossed Wristband ${i}`}
+                      className="w-full h-20 object-contain hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Desktop Layout - Game Profile Style */}
-          <div className="hidden lg:block relative h-screen">
-            <div className="container mx-auto px-8 pt-8">
-              {/* Title Section */}
-              <h1 className="text-7xl text-white mb-4 font-bold z-10 leading-tight">
+          {/* Desktop Layout */}
+          <div className="hidden lg:block">
+            <div className="container mx-auto px-8">
+              <h1 className="text-6xl text-white mb-6 font-bold leading-tight animate-slide-up">
                 DEBOSSED/ENGRAVED & INK FILLED WRISTBANDS
               </h1>
 
-              {/* Info Badges */}
-              <div className="flex flex-row items-center mb-8">
-                <span className="flex flex-col ml-3 badge p-5 bg-gray-800/50 backdrop-blur-sm text-white rounded-lg">
+              <div className="flex flex-row items-center mb-8 animate-slide-up animation-delay-200">
+                <span className="flex flex-col badge p-5 bg-gray-800/50 backdrop-blur-sm text-white rounded-lg">
                   <span className="text-xl font-semibold">
                     Silicone Material
                   </span>
@@ -141,65 +133,40 @@ export default function DebossedPage() {
                 </span>
               </div>
 
-              {/* Main Content with Images */}
-              <div className="flex flex-col mb-8">
-                {/* Image Grid - 4 Images */}
-                <div className="grid grid-cols-4 gap-6 max-w-6xl mb-6">
-                  <div className="rounded-xl overflow-hidden">
-                    <Image
-                      src="/Final-Web-Images/Images/Debossed page/embossed-rubber-handbands.webp"
-                      alt="Debossed Wristband 1"
-                      width={400}
-                      height={300}
-                      className="w-full h-48 object-contain hover:scale-110 transition-transform duration-500"
+              <div className="grid grid-cols-5 gap-4 max-w-6xl mb-8">
+                {[
+                  "embossed-rubber-handbands",
+                  "1 inch-silicon-wristband-debossed",
+                  "debossed-rubber-wristbands",
+                  "emboss-silicone-wristbands",
+                  "deboss-custom-wristband-sri-lanka",
+                ].map((img, i) => (
+                  <div
+                    key={i}
+                    className="overflow-hidden animate-scale-in bg-white/10 backdrop-blur-sm py-0 my-0"
+                    style={{ animationDelay: `${400 + i * 100}ms` }}
+                  >
+                    <img
+                      src={`/Final-Web-Images/Images/Debossed page/${img}.webp`}
+                      alt={`Debossed Wristband ${i}`}
+                      className="w-full h-40 object-contain hover:scale-110 transition-transform duration-500"
                     />
                   </div>
+                ))}
+              </div>
 
-                  <div className="rounded-xl overflow-hidden">
-                    <Image
-                      src="/Final-Web-Images/Images/Debossed page/1 inch-silicon-wristband-debossed.webp"
-                      alt="Debossed Wristband 2"
-                      width={400}
-                      height={300}
-                      className="w-full h-48 object-contain hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-
-                  <div className="rounded-xl overflow-hidden">
-                    <Image
-                      src="/Final-Web-Images/Images/Debossed page/debossed-rubber-wristbands.webp"
-                      alt="Debossed Wristband 3"
-                      width={400}
-                      height={300}
-                      className="w-full h-48 object-contain hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-
-                  <div className="rounded-xl overflow-hidden">
-                    <Image
-                      src="/Final-Web-Images/Images/Debossed page/emboss-silicone-wristbands.webp"
-                      alt="Debossed Wristband 4"
-                      width={400}
-                      height={300}
-                      className="w-full h-48 object-contain hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                </div>
-
-                {/* Description */}
-                <div className="max-w-4xl">
-                  <h2 className="text-3xl text-white font-bold mb-6 hover:opacity-80 transition-opacity">
-                    Product Description
-                  </h2>
-                  <div className="text-white text-lg mb-6 leading-relaxed">
-                    <p className="text-xl mb-4 text-gray-200">
-                      Your design is engraved into the band and then filled with
-                      vibrant, colorful finish.
-                    </p>
-                    <p className="text-2xl font-bold text-green-300 mb-6">
-                      The Classic – Our Most Popular Choice
-                    </p>
-                  </div>
+              <div className="max-w-4xl animate-slide-up animation-delay-900">
+                <h2 className="text-3xl text-white font-bold mb-4">
+                  Product Description
+                </h2>
+                <div className="text-white text-lg leading-relaxed">
+                  <p className="text-xl mb-3 text-gray-200">
+                    Your design is engraved into the band and filled with
+                    vibrant ink, creating a classic look with premium appeal.
+                  </p>
+                  <p className="text-2xl font-bold text-green-300">
+                    The Classic Choice – Our Most Popular Style.
+                  </p>
                 </div>
               </div>
             </div>
@@ -208,129 +175,374 @@ export default function DebossedPage() {
       </section>
 
       {/* What is Debossed Ink-Fill */}
-      <section className="bg-gray-50 py-16 px-6 lg:px-8">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold mb-8 text-gray-900">
-            What is Debossed Ink-Fill?
+      <section
+        id="debossed-info"
+        data-animate
+        className={`bg-white py-20 px-6 lg:px-8 transition-all duration-1000 ${
+          visibleSections.has("debossed-info")
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-20"
+        }`}
+      >
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-gray-900">
+              What is Debossed Ink-Fill?
+            </h2>
+            <div className="w-16 h-1 bg-green-500 mx-auto"></div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-gray-50 rounded-lg p-8 border border-gray-200 hover:border-green-300 transition-colors">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Engraved Design
+              </h3>
+              <p className="text-gray-700">
+                Your design is carved into the wristband surface.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-8 border border-gray-200 hover:border-green-300 transition-colors">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Ink Filled
+              </h3>
+              <p className="text-gray-700">
+                The engraved areas are filled with vibrant, long-lasting ink.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-8 border border-gray-200 hover:border-green-300 transition-colors">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Protected Finish
+              </h3>
+              <p className="text-gray-700">
+                Ink sits below the surface, resisting scratches and fading.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Width Options */}
+      <section
+        id="width-section"
+        data-animate
+        className={`bg-gray-100 py-16 px-6 lg:px-8 transition-all duration-1000 ${
+          visibleSections.has("width-section")
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-20"
+        }`}
+      >
+        <div className="container mx-auto max-w-5xl">
+          <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">
+            Available Wristband Widths
           </h2>
-          <div className="space-y-4 text-lg text-gray-700">
-            <p>
-              Your design is engraved into the band and then filled with
-              long-lasting ink.
+
+          <div className="bg-white rounded-lg shadow overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-gray-800">
+                  <tr>
+                    <th className="px-6 py-4 text-left text-white font-bold">
+                      Width Options
+                    </th>
+                    <th className="px-6 py-4 text-center text-white font-bold">
+                      25 mm
+                    </th>
+                    <th className="px-6 py-4 text-center text-white font-bold">
+                      20 mm
+                    </th>
+                    <th className="px-6 py-4 text-center text-white font-bold">
+                      15 mm
+                    </th>
+                    <th className="px-6 py-4 text-center text-white font-bold bg-green-600">
+                      12 mm
+                    </th>
+                    <th className="px-6 py-4 text-center text-white font-bold">
+                      6 mm
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-t">
+                    <td className="px-6 py-6 font-semibold text-gray-700">
+                      Available Sizes
+                    </td>
+                    <td className="px-6 py-6 text-center text-gray-600">✓</td>
+                    <td className="px-6 py-6 text-center text-gray-600">✓</td>
+                    <td className="px-6 py-6 text-center text-gray-600">✓</td>
+                    <td className="px-6 py-6 text-center bg-green-50 font-bold text-green-700">
+                      ✓ Most Popular
+                    </td>
+                    <td className="px-6 py-6 text-center text-gray-600">✓</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="mt-8 text-center bg-green-50 rounded-lg p-6 border border-green-200">
+            <p className="text-lg font-semibold text-green-900">
+              The standard width ordered by 80% of our customers is 12 mm
             </p>
-            <p>
-              The ink sits below the surface, protecting it from scratches and
-              fading.
+          </div>
+        </div>
+      </section>
+
+      {/* Quality Section */}
+      <section
+        id="quality-section"
+        data-animate
+        className={`bg-white py-16 px-6 lg:px-8 transition-all duration-1000 ${
+          visibleSections.has("quality-section")
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-20"
+        }`}
+      >
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-gray-900">
+              Our bands are made from 100% silicone and are the best quality you
+              will find
+            </h2>
+            <p className="text-xl text-gray-600">
+              High quality Printed, Debossed and Embossed Wristbands - We assure
+              superior quality
             </p>
-            <p>
-              Gives you the premium look of engraving with the vivid colors of
-              printing.
+          </div>
+
+          <div className="bg-gray-50 rounded-lg p-8 mb-8">
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Our Silicone wristbands are a great and relatively inexpensive
+              product that can be used as handouts for events, fundraisers,
+              awareness campaigns, and promotional activities.
             </p>
           </div>
         </div>
       </section>
 
       {/* Customization Options */}
-      <section className="bg-white py-16 px-6 lg:px-8">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold mb-8 text-gray-900">
-            Customization Options
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8 text-gray-700">
-            <div className="space-y-4">
-              <div>
-                <h3 className="font-bold text-lg text-blue-600 mb-2">
-                  Widths:
-                </h3>
-                <p>6 mm, 12 mm (most popular), 15 mm, 20 mm, 25 mm</p>
-              </div>
+      <section
+        id="customization"
+        data-animate
+        className={`bg-gray-100 py-20 px-6 lg:px-8 transition-all duration-1000 ${
+          visibleSections.has("customization")
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-20"
+        }`}
+      >
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-3">
+              Customization Options
+            </h2>
+            <div className="w-16 h-1 bg-green-500"></div>
+            <p className="text-lg text-gray-600 mt-4">
+              Tailor your wristbands to your exact specifications
+            </p>
+          </div>
 
-              <div>
-                <h3 className="font-bold text-lg text-blue-600 mb-2">Sizes:</h3>
-                <p>160 mm, 180 mm, 190 mm, 202 mm, 210 mm</p>
-              </div>
-
-              <div>
-                <h3 className="font-bold text-lg text-blue-600 mb-2">
-                  Band Colors:
-                </h3>
-                <p>
-                  Solid, segmented (4–5 colors), swirl, glow-in-the-dark (radium
-                  effect)
-                </p>
-              </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div className="border border-gray-200 rounded-lg p-8 hover:border-green-300 hover:shadow-md transition-all bg-white">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                Widths
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  "6 mm",
+                  "12 mm (Most Popular)",
+                  "15 mm",
+                  "20 mm",
+                  "25 mm",
+                ].map((width) => (
+                  <li key={width} className="text-gray-700 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3"></span>
+                    {width}
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="space-y-4">
-              <div>
-                <h3 className="font-bold text-lg text-blue-600 mb-2">
-                  Band & Ink Shades:
-                </h3>
-                <p>2200+ Pantone-matched colors</p>
-              </div>
+            <div className="border border-gray-200 rounded-lg p-8 hover:border-green-300 hover:shadow-md transition-all bg-white">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                Sizes
+              </h3>
+              <ul className="space-y-3">
+                {["160 mm", "180 mm", "190 mm", "202 mm", "210 mm"].map(
+                  (size) => (
+                    <li key={size} className="text-gray-700 flex items-center">
+                      <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3"></span>
+                      {size}
+                    </li>
+                  )
+                )}
+              </ul>
+            </div>
 
-              <div>
-                <h3 className="font-bold text-lg text-blue-600 mb-2">
-                  Special Effects:
-                </h3>
-                <p>
-                  Figured watch style, dual-layer, luminous text, numbering,
-                  QR/barcodes, adjustable snap-buttons
-                </p>
-              </div>
+            <div className="border border-gray-200 rounded-lg p-8 hover:border-green-300 hover:shadow-md transition-all bg-white">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                Band Colors
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  "Solid",
+                  "Segmented (4-5 colors)",
+                  "Swirl",
+                  "Glow-in-the-dark",
+                ].map((color) => (
+                  <li key={color} className="text-gray-700 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3"></span>
+                    {color}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-8 hover:border-green-300 hover:shadow-md transition-all bg-white">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                Ink Colors
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Choose from thousands of pantone matched shades
+              </p>
+              <p className="text-3xl font-bold text-green-600">2200+</p>
+              <p className="text-sm text-gray-500 mt-2">Pantone Colors</p>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-8 hover:border-green-300 hover:shadow-md transition-all bg-white">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                Special Effects
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  "Dual-layer",
+                  "Luminous text",
+                  "Numbering",
+                  "QR/Barcodes",
+                  "Snap-buttons",
+                ].map((effect) => (
+                  <li key={effect} className="text-gray-700 flex items-center">
+                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3"></span>
+                    {effect}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-8 hover:border-green-300 hover:shadow-md transition-all bg-white">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                Material
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  "100% Silicone",
+                  "Hypoallergenic",
+                  "Latex-free",
+                  "Eco-friendly",
+                ].map((material) => (
+                  <li
+                    key={material}
+                    className="text-gray-700 flex items-center"
+                  >
+                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3"></span>
+                    {material}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
       {/* Product Characteristics */}
-      <section className="bg-gray-50 py-16 px-6 lg:px-8">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold mb-8 text-gray-900">
-            Product Characteristics
-          </h2>
-          <div className="space-y-4 text-lg text-gray-700">
-            <p>
-              • Made from 100% silicone (latex-free, hypoallergenic,
-              eco-friendly)
+      <section
+        id="characteristics"
+        data-animate
+        className={`bg-white py-20 px-6 lg:px-8 transition-all duration-1000 ${
+          visibleSections.has("characteristics")
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-20"
+        }`}
+      >
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-3">
+              Product Characteristics
+            </h2>
+            <div className="w-16 h-1 bg-green-500 mx-auto"></div>
+            <p className="text-xl text-gray-600 mt-4">
+              Premium quality features that set us apart
             </p>
-            <p>
-              • Durable & waterproof – made to last through daily use and
-              outdoor events
-            </p>
-            <p>• Comfortable fit – soft, stretchable, safe for all ages</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: "100% Silicone",
+                desc: "Latex-free, hypoallergenic & eco-friendly material",
+              },
+              {
+                title: "Durable & Waterproof",
+                desc: "Built to last through any conditions",
+              },
+              {
+                title: "Protected Design",
+                desc: "Ink protected below surface resists wear",
+              },
+              {
+                title: "High Visibility",
+                desc: "Vibrant ink for maximum contrast and impact",
+              },
+            ].map((char, i) => (
+              <div
+                key={i}
+                className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center hover:border-green-300 transition-colors"
+              >
+                <h3 className="text-lg font-bold text-gray-900 mb-3">
+                  {char.title}
+                </h3>
+                <p className="text-gray-600 text-sm">{char.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Perfect For */}
-      <section className="bg-white py-16 px-6 lg:px-8">
+      <section
+        id="perfect-for"
+        data-animate
+        className={`bg-gray-100 py-20 px-6 lg:px-8 transition-all duration-1000 ${
+          visibleSections.has("perfect-for")
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-20"
+        }`}
+      >
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-3">
               Perfect For
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <div className="w-16 h-1 bg-green-500 mx-auto"></div>
+            <p className="text-lg text-gray-600 mt-4">
               Ideal for a wide range of organizations and events — durable,
               colorful, and unforgettable.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {/* Item 1 */}
-            <div className="bg-blue-50 p-8 rounded-2xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow duration-300 hover:-translate-y-1">
-              <h3 className="font-bold text-lg text-blue-600 mb-2 flex items-center gap-2">
-                🎓 Schools & Universities
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="bg-blue-50 p-8 rounded-lg border border-blue-200 hover:border-blue-400 hover:shadow-md transition-all">
+              <h3 className="font-bold text-lg text-blue-600 mb-3">
+                Schools & Universities
               </h3>
               <p className="text-gray-700">
                 Great for student IDs, clubs, and awareness campaigns on campus.
               </p>
             </div>
 
-            {/* Item 2 */}
-            <div className="bg-green-50 p-8 rounded-2xl border border-green-100 shadow-sm hover:shadow-md transition-shadow duration-300 hover:-translate-y-1">
-              <h3 className="font-bold text-lg text-green-600 mb-2 flex items-center gap-2">
-                💚 Fundraising & Charities
+            <div className="bg-green-50 p-8 rounded-lg border border-green-200 hover:border-green-400 hover:shadow-md transition-all">
+              <h3 className="font-bold text-lg text-green-600 mb-3">
+                Fundraising & Charities
               </h3>
               <p className="text-gray-700">
                 Create unity and recognition for charitable causes and social
@@ -338,10 +550,9 @@ export default function DebossedPage() {
               </p>
             </div>
 
-            {/* Item 3 */}
-            <div className="bg-purple-50 p-8 rounded-2xl border border-purple-100 shadow-sm hover:shadow-md transition-shadow duration-300 hover:-translate-y-1">
-              <h3 className="font-bold text-lg text-purple-600 mb-2 flex items-center gap-2">
-                🎤 Events & Concerts
+            <div className="bg-purple-50 p-8 rounded-lg border border-purple-200 hover:border-purple-400 hover:shadow-md transition-all">
+              <h3 className="font-bold text-lg text-purple-600 mb-3">
+                Events & Concerts
               </h3>
               <p className="text-gray-700">
                 Perfect for concerts, parties, and festivals — stylish and
@@ -349,10 +560,9 @@ export default function DebossedPage() {
               </p>
             </div>
 
-            {/* Item 4 */}
-            <div className="bg-orange-50 p-8 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-shadow duration-300 hover:-translate-y-1">
-              <h3 className="font-bold text-lg text-orange-600 mb-2 flex items-center gap-2">
-                🏢 Corporate Branding
+            <div className="bg-orange-50 p-8 rounded-lg border border-orange-200 hover:border-orange-400 hover:shadow-md transition-all">
+              <h3 className="font-bold text-lg text-orange-600 mb-3">
+                Corporate Branding
               </h3>
               <p className="text-gray-700">
                 Build brand visibility at trade shows, marketing campaigns, and
@@ -360,10 +570,9 @@ export default function DebossedPage() {
               </p>
             </div>
 
-            {/* Item 5 */}
-            <div className="bg-teal-50 p-8 rounded-2xl border border-teal-100 shadow-sm hover:shadow-md transition-shadow duration-300 hover:-translate-y-1">
-              <h3 className="font-bold text-lg text-teal-600 mb-2 flex items-center gap-2">
-                📚 Tuition Class Marketing
+            <div className="bg-teal-50 p-8 rounded-lg border border-teal-200 hover:border-teal-400 hover:shadow-md transition-all">
+              <h3 className="font-bold text-lg text-teal-600 mb-3">
+                Tuition Class Marketing
               </h3>
               <p className="text-gray-700">
                 Give your students a sense of identity while promoting your
@@ -371,10 +580,9 @@ export default function DebossedPage() {
               </p>
             </div>
 
-            {/* Item 6 (new addition for balance) */}
-            <div className="bg-pink-50 p-8 rounded-2xl border border-pink-100 shadow-sm hover:shadow-md transition-shadow duration-300 hover:-translate-y-1">
-              <h3 className="font-bold text-lg text-pink-600 mb-2 flex items-center gap-2">
-                💡 Awareness Campaigns
+            <div className="bg-pink-50 p-8 rounded-lg border border-pink-200 hover:border-pink-400 hover:shadow-md transition-all">
+              <h3 className="font-bold text-lg text-pink-600 mb-3">
+                Awareness Campaigns
               </h3>
               <p className="text-gray-700">
                 Spread awareness for social causes, events, or special
@@ -385,95 +593,187 @@ export default function DebossedPage() {
         </div>
       </section>
 
-      {/* Improved Gallery Section */}
-      <section className="bg-gray-200 py-16 px-6 lg:px-8">
+      {/* Gallery Section */}
+      <section
+        id="gallery"
+        data-animate
+        className={`bg-white py-20 px-6 lg:px-8 transition-all duration-1000 ${
+          visibleSections.has("gallery")
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-20"
+        }`}
+      >
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-black mb-4">
+            <h2 className="text-4xl font-bold text-gray-900 mb-3">
               General Specification
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Explore our premium debossed wristband collection with vibrant
-              ink-filled designs
+
+            <div className="w-16 h-1 bg-green-500 mx-auto mb-4"></div>
+            <p className="text-xl text-gray-600">
+              Tons of Customization options to make your wristbands truly
+              one-of-a-kind
+            </p>
+            <p className="text-sm pt-6 text-gray-600">
+              Share your idea with us - We'll craft the perfect design that fits
+              your purpose, with unmatched quality and finish
             </p>
           </div>
 
-          {/* 3x3 Grid with 2x2 featured image */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
-            {/* Large Featured Image - 2x2 */}
-            <div className="col-span-2 row-span-2 rounded-2xl overflow-hidden">
-              <div className="relative w-full h-full min-h-96">
-                <Image
+          <div className="max-w-5xl mx-auto mb-12">
+            {/* Main Featured Image */}
+            <div className="relative w-full mb-6">
+              <div
+                className="rounded-lg shadow-lg border-4 border-green-500 cursor-pointer group w-full"
+                onClick={() =>
+                  setSelectedImage(
+                    "/Final-Web-Images/Images/Debossed page/emboss-debossed-rubber-wrsitbands.webp"
+                  )
+                }
+              >
+                <img
                   src="/Final-Web-Images/Images/Debossed page/emboss-debossed-rubber-wrsitbands.webp"
-                  alt="ROLEX Debossed Bands"
-                  fill
-                  className="object-fill"
+                  alt="Debossed Bands"
+                  className="w-full h-auto object-contain group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
             </div>
 
-            {/* Small Image 1 */}
-            <div className="rounded-2xl overflow-hidden">
-              <div className="relative w-full h-48">
-                <Image
-                  src="/Final-Web-Images/Images/Debossed page/1 inch-silicon-wristband-debossed.webp"
-                  alt="1 inch Silicon Wristband"
-                  fill
-                  className="object-fill"
-                />
-              </div>
+            {/* Thumbnails Row */}
+            <div className="flex gap-4">
+              {[
+                "embossed-rubber-handbands",
+                "1 inch-silicon-wristband-debossed",
+                "debossed-rubber-wristbands",
+                "emboss-silicone-wristbands",
+                "deboss-custom-wristband-sri-lanka",
+              ].map((img, i) => (
+                <div
+                  key={i}
+                  className="rounded-lg overflow-hidden shadow cursor-pointer group flex-1 border-4 border-gray-200 hover:border-green-500 transition-colors"
+                  onClick={() =>
+                    setSelectedImage(
+                      `/Final-Web-Images/Images/Debossed page/${img}.webp`
+                    )
+                  }
+                >
+                  <img
+                    src={`/Final-Web-Images/Images/Debossed page/${img}.webp`}
+                    alt={`Wristband ${i}`}
+                    className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+              ))}
             </div>
+          </div>
 
-            {/* Small Image 2 */}
-            <div className="rounded-2xl overflow-hidden">
-              <div className="relative w-full h-48">
-                <Image
-                  src="/Final-Web-Images/Images/Debossed page/debossed-rubber-wristbands.webp"
-                  alt="Debossed Rubber Wristbands"
-                  fill
-                  className="object-fill"
-                />
-              </div>
+          {/* Modal for Enlarged Image */}
+          {selectedImage && (
+            <div
+              className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+              onClick={() => setSelectedImage(null)}
+            >
+              <button
+                className="absolute top-6 right-6 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center font-bold hover:bg-gray-200 transition-colors"
+                onClick={() => setSelectedImage(null)}
+              >
+                ✕
+              </button>
+              <img
+                src={selectedImage}
+                alt="Enlarged view"
+                className="max-w-4xl max-h-[80vh] rounded-lg object-contain"
+              />
             </div>
+          )}
+        </div>
+      </section>
 
-            {/* Small Image 3 */}
-            <div className="rounded-2xl overflow-hidden">
-              <div className="relative w-full h-48">
-                <Image
-                  src="/Final-Web-Images/Images/Debossed page/emboss-silicone-wristbands.webp"
-                  alt="Emboss Silicone Wristbands"
-                  fill
-                  className="object-fill"
-                />
-              </div>
-            </div>
-
-            {/* Small Image 4 */}
-            <div className="rounded-2xl overflow-hidden">
-              <div className="relative w-full h-48">
-                <Image
-                  src="/Final-Web-Images/Images/Debossed page/embossed-rubber-handbands.webp"
-                  alt="Embossed Rubber Handbands"
-                  fill
-                  className="object-fill"
-                />
-              </div>
-            </div>
-
-            {/* Small Image 5 */}
-            <div className="rounded-2xl overflow-hidden">
-              <div className="relative w-full h-48">
-                <Image
-                  src="/Final-Web-Images/Images/Debossed page/deboss-custom-wristband-sri-lanka.webp"
-                  alt="Custom Wristband Sri Lanka"
-                  fill
-                  className="object-fill"
-                />
-              </div>
-            </div>
+      {/* Contact CTA */}
+      <section className="bg-green-600 py-16 px-6 lg:px-8">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h2 className="text-4xl font-bold text-white mb-6">
+            Ready to Order Your Custom Wristbands?
+          </h2>
+          <p className="text-lg text-green-50 mb-8">
+            Get in touch with us today for a custom quote
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="tel:+940704925375"
+              className="inline-flex items-center justify-center gap-2 bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+            >
+              <Phone className="w-5 h-5" />
+              Call Us
+            </a>
+            <a
+              href="https://wa.me/940704925375"
+              className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors"
+            >
+              <MessageCircle className="w-5 h-5" />
+              WhatsApp Us
+            </a>
           </div>
         </div>
       </section>
+
+      <style jsx>{`
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .animate-slide-up {
+          animation: slideUp 0.8s ease-out forwards;
+        }
+
+        .animate-scale-in {
+          animation: scaleIn 0.6s ease-out forwards;
+          opacity: 0;
+        }
+
+        .animate-fade-in {
+          animation: fadeIn 1s ease-out forwards;
+        }
+
+        .animation-delay-200 {
+          animation-delay: 200ms;
+        }
+
+        .animation-delay-400 {
+          animation-delay: 400ms;
+        }
+
+        .animation-delay-900 {
+          animation-delay: 900ms;
+        }
+      `}</style>
     </div>
   );
 }

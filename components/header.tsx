@@ -23,26 +23,26 @@ export default function Header() {
             <nav className="hidden md:flex items-center gap-8">
               <Link
                 href="/#home"
-                className="text-xl font-bold text-gray-900 hover:text-cyan-600 transition-colors"
+                className="text-xl font-bold text-gray-900 hover:text-blue-400 transition-colors"
               >
                 Home
               </Link>
 
               <Link
                 href="/#products"
-                className="text-xl font-bold text-gray-900 hover:text-cyan-600 transition-colors"
+                className="text-xl font-bold text-gray-900 hover:text-blue-400 transition-colors"
               >
                 Products
               </Link>
               <Link
                 href="/gallery"
-                className="text-xl font-bold text-gray-900 hover:text-cyan-600 transition-colors"
+                className="text-xl font-bold text-gray-900 hover:text-blue-400 transition-colors"
               >
                 Gallery
               </Link>
               <Link
                 href="/about"
-                className="text-xl font-bold text-gray-900 hover:text-cyan-600 transition-colors"
+                className="text-xl font-bold text-gray-900 hover:text-blue-400 transition-colors"
               >
                 About Us
               </Link>
@@ -54,10 +54,10 @@ export default function Header() {
               className="hidden md:flex items-center gap-2 text-sm font-medium text-gray-900"
             >
               <Phone className="h-4 w-4" />
-              +94 070 492 5375
+              070 492 5375
             </a>
             <Link
-              href="https://wa.me/94704925375"
+              href="https://wa.me/+94704925375"
               target="_blank"
               className="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full shadow-md transition-colors"
               aria-label="Contact us on WhatsApp"
