@@ -92,13 +92,10 @@ export default function EmbossedPage() {
                   be finished with vibrant ink printing to make it stand out
                   even more.
                 </p>
-                <p className="text-2xl md:text-3xl font-bold text-cyan-300 mb-8 animate-slide-up animation-delay-400">
-                  The Bold Choice – A tactile and eye-catching wristband style.
-                </p>
               </div>
 
-              <div className="grid grid-cols-3 gap-3 max-w-4xl mx-auto">
-                {[1, 2, 3].map((i) => (
+              <div className="grid grid-cols-2 gap-3 max-w-4xl mx-auto">
+                {[1, 2, 3, 4].map((i) => (
                   <div
                     key={i}
                     className="rounded-lg overflow-hidden animate-scale-in bg-white/10 backdrop-blur-sm p-2"
@@ -124,6 +121,9 @@ export default function EmbossedPage() {
                   </div>
                 ))}
               </div>
+              <p className="text-2xl md:text-3xl font-bold text-cyan-300 my-8 animate-slide-up animation-delay-400">
+                The Bold Choice – A tactile and eye-catching wristband style.
+              </p>
             </div>
           </div>
 

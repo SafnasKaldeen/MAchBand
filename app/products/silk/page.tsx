@@ -87,9 +87,6 @@ export default function SilkScreenPage() {
                   Your design is printed directly onto the silicone surface
                   using a precise silk screen process.
                 </p>
-                <p className="text-2xl md:text-3xl font-bold text-purple-300 mb-8 animate-slide-up animation-delay-400">
-                  The Versatile Choice – Perfect for detailed designs.
-                </p>
               </div>
 
               <div className="grid grid-cols-2 gap-3 max-w-4xl mx-auto">
@@ -112,6 +109,9 @@ export default function SilkScreenPage() {
                   </div>
                 ))}
               </div>
+              <p className="text-2xl md:text-3xl font-bold text-purple-300 my-8 animate-slide-up animation-delay-400">
+                The Versatile Choice – Perfect for detailed designs.
+              </p>
             </div>
           </div>
 

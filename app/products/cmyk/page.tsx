@@ -87,9 +87,6 @@ export default function CMYKPage() {
                   Photo-quality prints that move, flex, and stay vibrant all
                   day.
                 </p>
-                <p className="text-2xl md:text-3xl font-bold text-yellow-300 mb-8 animate-slide-up animation-delay-400">
-                  Premium Full-Color Custom Printing
-                </p>
               </div>
 
               <div className="grid grid-cols-2 gap-3 max-w-4xl mx-auto">
@@ -112,6 +109,9 @@ export default function CMYKPage() {
                   </div>
                 ))}
               </div>
+              <p className="text-2xl md:text-3xl font-bold text-yellow-300 my-8 animate-slide-up animation-delay-400">
+                Premium Full-Color Custom Printing
+              </p>
             </div>
           </div>
 
