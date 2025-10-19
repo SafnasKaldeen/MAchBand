@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Phone, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import Header from "@/components/header";
+import ProductQuickNav from "@/components/ProductQuickNav";
 
 export default function DebossedPage() {
   const [visibleSections, setVisibleSections] = useState(new Set());
@@ -31,6 +32,8 @@ export default function DebossedPage() {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <Header />
+
+      <ProductQuickNav />
 
       {/* Hero Section */}
       <section
