@@ -67,7 +67,7 @@ export default function Header() {
               </svg>
             </Link>
             <Link
-              href="https://wa.me/+94704925375"
+              href="https://wa.me/94704925375?text=Hi%20there!%20I%27m%20interested%20in%20getting%20a%20quotation%20for%20your%20wrist%20bands?"
               target="_blank"
               className="inline-block bg-amber-300 font-bold text-black px-5 py-2 rounded-lg shadow-md hover:bg-amber-400 transition-colors"
             >
