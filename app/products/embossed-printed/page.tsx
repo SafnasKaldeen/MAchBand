@@ -1,10 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Phone, Mail, MessageCircle } from "lucide-react";
-import Link from "next/link";
+import { Phone, MessageCircle } from "lucide-react";
 import Image from "next/image";
-import Back from "@/components/Back";
+import Header from "@/components/header";
 
 export default function EmbossedPage() {
   const [visibleSections, setVisibleSections] = useState(new Set());
@@ -30,9 +29,16 @@ export default function EmbossedPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Header Component */}
+      <Header />
+
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen">
-        <div className="absolute inset-0 h-screen lg:hidden">
+      <section
+        className="relative w-full"
+        style={{ height: "calc(100vh - 5rem)" }}
+      >
+        {/* Background Image - Mobile */}
+        <div className="absolute inset-0 lg:hidden">
           <Image
             src="/Final-Web-Images/Images/Embossed Page/embossed-printed-bracelets.webp"
             alt="Embossed Full Color Printed Wristbands"
@@ -43,7 +49,8 @@ export default function EmbossedPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90"></div>
         </div>
 
-        <div className="hidden lg:block absolute inset-0 h-screen">
+        {/* Background Image - Desktop */}
+        <div className="hidden lg:block absolute inset-0">
           <Image
             src="/Final-Web-Images/Images/Embossed Page/emboss-silcon-wristbandlanka.webp"
             alt="Embossed Full Color Printed Wristbands Desktop"
@@ -54,8 +61,9 @@ export default function EmbossedPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
         </div>
 
+        {/* Blur Background Layer */}
         <div
-          className="absolute inset-0 h-screen"
+          className="absolute inset-0"
           style={{
             backgroundImage: `url(/Final-Web-Images/Images/Embossed Page/embossed-printed-bracelets.webp)`,
             backgroundSize: "cover",
@@ -65,14 +73,14 @@ export default function EmbossedPage() {
           }}
         ></div>
 
-        <div className="absolute inset-0 h-screen bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
 
-        <Back />
-
-        <div className="relative z-10 min-h-screen">
+        {/* Content */}
+        <div className="relative z-10 h-full flex flex-col justify-center">
+          {/* Mobile Layout */}
           <div className="block lg:hidden">
-            <div className="container mx-auto px-6 pt-4 pb-4">
-              <div className="max-w-3xl mb-12 animate-fade-in">
+            <div className="container mx-auto px-6">
+              <div className="max-w-3xl mb-8 animate-fade-in">
                 <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-white animate-slide-up">
                   EMBOSSED & PRINTED WRISTBANDS
                 </h1>
@@ -86,11 +94,11 @@ export default function EmbossedPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
-                {[1, 2, 3, 4].map((i) => (
+              <div className="grid grid-cols-3 gap-3 max-w-4xl mx-auto">
+                {[1, 2, 3].map((i) => (
                   <div
                     key={i}
-                    className="rounded-lg overflow-hidden animate-scale-in"
+                    className="rounded-lg overflow-hidden animate-scale-in bg-white/10 backdrop-blur-sm p-2"
                     style={{ animationDelay: `${i * 100}ms` }}
                   >
                     <Image
@@ -101,12 +109,14 @@ export default function EmbossedPage() {
                           ? "embossed-custom-silicone-wristbands"
                           : i === 3
                           ? "emboss-rubber-wristbands-srilanka"
-                          : "embos-silicon-handbands"
+                          : i === 4
+                          ? "embos-silicon-handbands"
+                          : "printed-embossed-bracelet"
                       }.webp`}
                       alt={`Embossed Wristband ${i}`}
-                      width={300}
-                      height={200}
-                      className="w-full h-32 object-contain hover:scale-105 transition-transform duration-300"
+                      width={200}
+                      height={150}
+                      className="w-full h-20 object-contain hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 ))}
@@ -114,14 +124,15 @@ export default function EmbossedPage() {
             </div>
           </div>
 
-          <div className="hidden lg:block relative h-screen">
-            <div className="container mx-auto px-8 pt-8">
-              <h1 className="text-7xl text-white mb-4 font-bold z-10 leading-tight animate-slide-up">
+          {/* Desktop Layout */}
+          <div className="hidden lg:block">
+            <div className="container mx-auto px-8">
+              <h1 className="text-6xl text-white mb-6 font-bold leading-tight animate-slide-up">
                 Embossed/ENGRAVED & INK FILLED WRISTBANDS
               </h1>
 
               <div className="flex flex-row items-center mb-8 animate-slide-up animation-delay-200">
-                <span className="flex flex-col ml-3 badge p-5 bg-gray-800/50 backdrop-blur-sm text-white rounded-lg">
+                <span className="flex flex-col badge p-5 bg-gray-800/50 backdrop-blur-sm text-white rounded-lg">
                   <span className="text-xl font-semibold">
                     Silicone Material
                   </span>
@@ -134,48 +145,48 @@ export default function EmbossedPage() {
                 </span>
               </div>
 
-              <div className="flex flex-col mb-4">
-                <div className="grid grid-cols-4 gap-6 max-w-6xl mb-6">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div
-                      key={i}
-                      className="rounded-xl overflow-hidden animate-scale-in"
-                      style={{ animationDelay: `${400 + i * 100}ms` }}
-                    >
-                      <Image
-                        src={`/Final-Web-Images/Images/Embossed Page/${
-                          i === 1
-                            ? "embossed-segmented-wristband"
-                            : i === 2
-                            ? "embossed-custom-silicone-wristbands"
-                            : i === 3
-                            ? "emboss-rubber-wristbands-srilanka"
-                            : "embos-silicon-handbands"
-                        }.webp`}
-                        alt={`Embossed Wristband ${i}`}
-                        width={400}
-                        height={300}
-                        className="w-full h-48 object-contain hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                  ))}
-                </div>
-
-                <div className="max-w-4xl animate-slide-up animation-delay-800">
-                  <h2 className="text-3xl text-white font-bold mb-6 hover:opacity-80 transition-opacity">
-                    Product Description
-                  </h2>
-                  <div className="text-white text-lg mb-6 leading-relaxed">
-                    <p className="text-xl mb-4 text-gray-200">
-                      Your design is raised above the surface of the band, and
-                      can be finished with vibrant ink printing to make it stand
-                      out even more.
-                    </p>
-                    <p className="text-2xl font-bold text-cyan-300 mb-6">
-                      The Bold Choice – A tactile and eye-catching wristband
-                      style.
-                    </p>
+              <div className="grid grid-cols-5 gap-4 max-w-6xl mb-8">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <div
+                    key={i}
+                    className="overflow-hidden animate-scale-in bg-white/10 backdrop-blur-sm py-0 my-0"
+                    style={{ animationDelay: `${400 + i * 100}ms` }}
+                  >
+                    <Image
+                      src={`/Final-Web-Images/Images/Embossed Page/${
+                        i === 1
+                          ? "embossed-segmented-wristband"
+                          : i === 2
+                          ? "embossed-custom-silicone-wristbands"
+                          : i === 3
+                          ? "emboss-rubber-wristbands-srilanka"
+                          : i === 4
+                          ? "embos-silicon-handbands"
+                          : "printed-embossed-bracelet"
+                      }.webp`}
+                      alt={`Embossed Wristband ${i}`}
+                      width={300}
+                      height={250}
+                      className="w-full h-40 object-contain hover:scale-110 transition-transform duration-500"
+                    />
                   </div>
+                ))}
+              </div>
+
+              <div className="max-w-4xl animate-slide-up animation-delay-900">
+                <h2 className="text-3xl text-white font-bold mb-4">
+                  Product Description
+                </h2>
+                <div className="text-white text-lg leading-relaxed">
+                  <p className="text-xl mb-3 text-gray-200">
+                    Your design is raised above the surface of the band, and can
+                    be finished with vibrant ink printing to make it stand out
+                    even more.
+                  </p>
+                  <p className="text-2xl font-bold text-cyan-300">
+                    The Bold Choice – A tactile and eye-catching wristband
+                    style.
+                  </p>
                 </div>
               </div>
             </div>
@@ -326,28 +337,6 @@ export default function EmbossedPage() {
               product that can be used as handouts for events, fundraisers,
               awareness campaigns, and promotional activities.
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
-              <h3 className="text-xl font-bold text-blue-900 mb-4">
-                Minimum Order Quantity
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                100 pieces per order. Perfect for events, fundraisers, and
-                promotional campaigns.
-              </p>
-            </div>
-
-            <div className="bg-cyan-50 rounded-lg p-6 border border-cyan-200">
-              <h3 className="text-xl font-bold text-cyan-900 mb-4">
-                Customization
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                Fully customizable according to your text, logos, images and
-                designs. Make them uniquely yours.
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -657,10 +646,15 @@ export default function EmbossedPage() {
             <h2 className="text-4xl font-bold text-gray-900 mb-3">
               General Specification
             </h2>
+
             <div className="w-16 h-1 bg-cyan-500 mx-auto mb-4"></div>
-            <p className="text-lg text-gray-600">
-              Explore our premium Embossed wristband collection with vibrant
-              ink-filled designs
+            <p className="text-xl text-gray-600">
+              Tons of Customization options to make your wristbands truly
+              one-of-a-kind
+            </p>
+            <p className="text-sm pt-6 text-gray-600">
+              Share your idea with us - We'll craft the perfect design that fits
+              your purpose, with unmatched quality and finish
             </p>
           </div>
 
@@ -709,26 +703,6 @@ export default function EmbossedPage() {
                 </div>
               ))}
             </div>
-
-            {/* Modal for Enlarged Image */}
-            {selectedImage && (
-              <div
-                className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-                onClick={() => setSelectedImage(null)}
-              >
-                <button
-                  className="absolute top-6 right-6 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center font-bold hover:bg-gray-200 transition-colors"
-                  onClick={() => setSelectedImage(null)}
-                >
-                  ✕
-                </button>
-                <img
-                  src={selectedImage}
-                  alt="Enlarged view"
-                  className="max-w-4xl max-h-[80vh] rounded-lg object-contain"
-                />
-              </div>
-            )}
           </div>
 
           {/* Modal for Enlarged Image */}
@@ -834,8 +808,8 @@ export default function EmbossedPage() {
           animation-delay: 400ms;
         }
 
-        .animation-delay-800 {
-          animation-delay: 800ms;
+        .animation-delay-900 {
+          animation-delay: 900ms;
         }
       `}</style>
     </div>

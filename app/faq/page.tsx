@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import Header from "@/components/header";
 
 const faqs = [
   {
@@ -124,70 +125,73 @@ export default function FAQSection() {
   };
 
   return (
-    <section id="faq" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-blue-900">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xl text-gray-700">
-              Find answers to common questions about our custom wristbands
-            </p>
-          </div>
+    <div>
+      <Header />
+      <section id="faq" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-blue-900">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-xl text-gray-700">
+                Find answers to common questions about our custom wristbands
+              </p>
+            </div>
 
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
-              >
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full px-6 py-5 text-left flex items-center justify-between bg-white hover:bg-blue-50 transition-colors duration-300"
-                >
-                  <span className="text-lg font-semibold text-blue-900 pr-4">
-                    {faq.question}
-                  </span>
-                  <ChevronDown
-                    className={`h-6 w-6 text-blue-900 flex-shrink-0 transition-transform duration-300 ${
-                      openIndex === index ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    openIndex === index ? "max-h-96" : "max-h-0"
-                  }`}
+                  key={index}
+                  className="border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
                 >
-                  <div className="px-6 py-5 bg-blue-50 border-t border-gray-200">
-                    <p className="text-gray-700 leading-relaxed">
-                      {faq.answer}
-                    </p>
+                  <button
+                    onClick={() => toggleFAQ(index)}
+                    className="w-full px-6 py-5 text-left flex items-center justify-between bg-white hover:bg-blue-50 transition-colors duration-300"
+                  >
+                    <span className="text-lg font-semibold text-blue-900 pr-4">
+                      {faq.question}
+                    </span>
+                    <ChevronDown
+                      className={`h-6 w-6 text-blue-900 flex-shrink-0 transition-transform duration-300 ${
+                        openIndex === index ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${
+                      openIndex === index ? "max-h-96" : "max-h-0"
+                    }`}
+                  >
+                    <div className="px-6 py-5 bg-blue-50 border-t border-gray-200">
+                      <p className="text-gray-700 leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          <div className="mt-12 text-center bg-gradient-to-br from-blue-50 to-amber-50 rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold mb-3 text-blue-900">
-              Still Have Questions?
-            </h3>
-            <p className="text-gray-700 mb-6">
-              Our friendly team is here to help. Get in touch with us for
-              personalized assistance.
-            </p>
-            <Link
-              href="https://wa.me/+94704925375"
-              target="_blank"
-              className="inline-block bg-amber-300 font-bold text-black px-8 py-3 rounded-lg shadow-md hover:bg-amber-400 transition-colors"
-            >
-              Contact Us on WhatsApp
-            </Link>
+            <div className="mt-12 text-center bg-gradient-to-br from-blue-50 to-amber-50 rounded-2xl p-8 shadow-lg">
+              <h3 className="text-2xl font-bold mb-3 text-blue-900">
+                Still Have Questions?
+              </h3>
+              <p className="text-gray-700 mb-6">
+                Our friendly team is here to help. Get in touch with us for
+                personalized assistance.
+              </p>
+              <Link
+                href="https://wa.me/+94704925375"
+                target="_blank"
+                className="inline-block bg-amber-300 font-bold text-black px-8 py-3 rounded-lg shadow-md hover:bg-amber-400 transition-colors"
+              >
+                Contact Us on WhatsApp
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
