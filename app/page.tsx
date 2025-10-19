@@ -22,20 +22,24 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-300">
-      {/* Header */}
+      {/* Header - Fixed Height */}
       <Header />
 
-      {/* Hero Section */}
+      {/* Hero Section - Uses exact calculation for consistent height */}
       <section
-        className="bg-gradient-to-b from-blue-50 to-white"
-        style={{ height: "calc(100vh - 80px)" }} // Changed from 5rem to exact 80px
+        className="bg-gradient-to-b from-blue-50 to-white relative"
+        style={{
+          height: "calc(100vh - 80px)",
+          minHeight: "500px", // Minimum height for very small screens
+          maxHeight: "1080px", // Maximum height to prevent oversized on large screens
+        }}
       >
         <HeroCarousel />
       </section>
 
       {/* Signature Imprint Styles */}
       <section id="products" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text">
               Signature Imprint Styles
@@ -140,11 +144,11 @@ export default function Home() {
 
       {/* Why Choose Section */}
       <section className="py-20 bg-blue-50">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-7xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
             Why Choose Mach Wristbands Lanka
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card>
               <CardContent className="p-6 text-center">
                 <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">

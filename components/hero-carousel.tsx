@@ -72,7 +72,7 @@ export function HeroCarousel() {
 
   return (
     <div className="relative w-full h-full overflow-hidden group">
-      {/* Slides */}
+      {/* Slides Container */}
       <div className="relative w-full h-full">
         {slides.map((slide, index) => (
           <div
@@ -83,40 +83,48 @@ export function HeroCarousel() {
                 : "opacity-0 scale-105"
             }`}
           >
-            {/* Desktop Image */}
-            <div className="hidden md:block w-full h-full relative">
+            {/* Desktop Image - Full Cover with Center Focus */}
+            <div className="hidden md:block w-full h-full relative overflow-hidden">
               <Image
                 src={slide.desktopImage || "/placeholder.svg"}
                 alt={slide.alt}
                 fill
-                className="object-cover object-center"
-                style={{ objectFit: "cover" }}
+                className="object-cover"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center center",
+                }}
                 priority={index === 0}
                 sizes="100vw"
+                quality={95}
               />
             </div>
 
             {/* Mobile Image */}
-            <div className="block md:hidden w-full h-full relative">
+            <div className="block md:hidden w-full h-full relative overflow-hidden">
               <Image
                 src={slide.mobileImage || "/placeholder.svg"}
                 alt={slide.alt}
                 fill
-                className="object-cover object-center"
-                style={{ objectFit: "cover" }}
+                className="object-cover"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center center",
+                }}
                 priority={index === 0}
                 sizes="100vw"
+                quality={95}
               />
             </div>
 
             {/* Gradient overlay for better text visibility */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none" />
           </div>
         ))}
       </div>
 
       {/* Dot Indicators */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+      <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
         {slides.map((_, index) => (
           <button
             key={index}
@@ -131,12 +139,15 @@ export function HeroCarousel() {
         ))}
       </div>
 
-      {/* Content Overlay */}
-      <div className="absolute inset-0 flex items-end justify-center md:justify-end pb-24 px-4 md:px-8 z-10">
-        <div className="text-center md:text-left text-white w-full md:w-1/2 md:mr-8 max-w-2xl">
-          <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-balance drop-shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-700">
-            Silicone solutions for kids, teens, and adults—perfect for everyone.
-          </h1>
+      {/* Content Overlay - Positioned Absolutely */}
+      <div className="absolute bottom-20 md:bottom-24 left-0 right-0 px-4 md:px-8 lg:px-12 z-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center md:text-right text-white md:ml-auto md:max-w-2xl">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight drop-shadow-2xl">
+              Silicone solutions for kids, teens, and adults—perfect for
+              everyone.
+            </h1>
+          </div>
         </div>
       </div>
     </div>
