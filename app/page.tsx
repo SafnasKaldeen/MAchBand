@@ -28,7 +28,7 @@ export default function Home() {
       {/* Hero Section */}
       <section
         className="bg-gradient-to-b from-blue-50 to-white"
-        style={{ height: "calc(100vh - 5rem)" }}
+        style={{ height: "calc(100vh - 80px)" }} // Changed from 5rem to exact 80px
       >
         <HeroCarousel />
       </section>

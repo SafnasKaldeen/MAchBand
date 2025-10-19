@@ -40,7 +40,6 @@ export function HeroCarousel() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Check if mobile on mount and on resize
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -59,7 +58,7 @@ export function HeroCarousel() {
     return () => clearInterval(timer);
   }, []);
 
-  const goToSlide = (index: number) => {
+  const goToSlide = (index) => {
     setCurrentSlide(index);
   };
 
@@ -85,24 +84,28 @@ export function HeroCarousel() {
             }`}
           >
             {/* Desktop Image */}
-            <div className="hidden md:block w-full h-full">
+            <div className="hidden md:block w-full h-full relative">
               <Image
                 src={slide.desktopImage || "/placeholder.svg"}
                 alt={slide.alt}
                 fill
-                className="object-cover"
+                className="object-cover object-center"
+                style={{ objectFit: "cover" }}
                 priority={index === 0}
+                sizes="100vw"
               />
             </div>
 
             {/* Mobile Image */}
-            <div className="block md:hidden w-full h-full">
+            <div className="block md:hidden w-full h-full relative">
               <Image
                 src={slide.mobileImage || "/placeholder.svg"}
                 alt={slide.alt}
                 fill
-                className="object-cover"
+                className="object-cover object-center"
+                style={{ objectFit: "cover" }}
                 priority={index === 0}
+                sizes="100vw"
               />
             </div>
 
@@ -111,22 +114,6 @@ export function HeroCarousel() {
           </div>
         ))}
       </div>
-
-      {/* Navigation Arrows */}
-      {/* <button
-        onClick={goToPrevious}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-900 rounded-full p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 shadow-lg z-10"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="h-6 w-6" />
-      </button>
-      <button
-        onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-900 rounded-full p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 shadow-lg z-10"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="h-6 w-6" />
-      </button> */}
 
       {/* Dot Indicators */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-10">
@@ -146,8 +133,8 @@ export function HeroCarousel() {
 
       {/* Content Overlay */}
       <div className="absolute inset-0 flex items-end justify-center md:justify-end pb-24 px-4 md:px-8 z-10">
-        <div className="text-center md:text-left text-white w-full md:w-1/2 md:mr-8">
-          <h1 className="text-xl md:text-4xl font-bold text-balance drop-shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <div className="text-center md:text-left text-white w-full md:w-1/2 md:mr-8 max-w-2xl">
+          <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-balance drop-shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-700">
             Silicone solutions for kids, teens, and adults—perfect for everyone.
           </h1>
         </div>
