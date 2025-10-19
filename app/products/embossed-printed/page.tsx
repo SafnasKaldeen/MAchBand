@@ -470,15 +470,6 @@ export default function EmbossedPage() {
               </ul>
             </div>
           </div>
-
-          <div className="bg-cyan-50 border border-cyan-200 rounded-lg p-6">
-            <p className="text-gray-700">
-              <span className="font-semibold text-cyan-700">
-                Minimum Order:
-              </span>{" "}
-              100 pieces
-            </p>
-          </div>
         </div>
       </section>
 
