@@ -5,17 +5,17 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="bg-gray-200 text-black py-12 relative overflow-hidden">
-      <div className="container mx-auto w-max-8xl px-4">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-4">
+      <div className="container mx-auto max-w-7xl px-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Left Section - Logo and Description */}
-          <div className="md:col-span-3">
+          <div className="flex flex-col">
             <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center mb-6 shadow-lg">
               <Image
                 src="/Mach-Wristband-Logo.png"
                 alt="Mach Wristbands Logo"
-                width={20}
-                height={20}
-                className="w-32 h-32 object-contain"
+                width={80}
+                height={80}
+                className="w-full h-full object-contain p-2"
               />
             </div>
             <p className="text-sm text-gray-700 leading-relaxed">
@@ -28,7 +28,7 @@ export default function Footer() {
           </div>
 
           {/* Center Section - Information and Social */}
-          <div className="md:col-span-5 flex flex-col items-center justify-start">
+          <div className="flex flex-col items-center justify-start">
             <div className="mb-8">
               <h3 className="text-2xl font-bold mb-4 text-center text-black">
                 INFORMATION
@@ -93,7 +93,7 @@ export default function Footer() {
           </div>
 
           {/* Right Section - Address */}
-          <div className="md:col-span-4">
+          <div className="flex flex-col">
             <h3 className="text-2xl font-bold mb-4 text-blue-900">Address</h3>
             <div className="space-y-3 text-blue-900">
               <p className="font-semibold text-lg">
@@ -112,13 +112,15 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Copyright */}
-        <p className="text-center text-black font-bold">
-          © 2025 Mach Wristbands Lanka. All rights reserved.
-        </p>
-
         {/* Yellow Circle Decoration */}
-        <div className="absolute bottom-4 right-4 w-32 h-32 bg-yellow-400 rounded-full shadow-2xl hidden lg:block"></div>
+        {/* <div className="absolute bottom-4 right-4 w-32 h-32 bg-yellow-400 rounded-full shadow-2xl hidden lg:block"></div> */}
+
+        {/* Bottom Copyright */}
+        <div className="border-t border-gray-300 pt-6">
+          <p className="text-center text-black font-bold">
+            © 2025 Mach Wristbands Lanka. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );

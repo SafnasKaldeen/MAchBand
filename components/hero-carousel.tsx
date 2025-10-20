@@ -9,33 +9,48 @@ const slides = [
     desktopImage: "/Final-Web-Images/Images/Home-page/Lap/1.webp",
     tabletImage: "/Final-Web-Images/Images/Home-page/tab/1.webp",
     mobileImage: "/Final-Web-Images/Images/Home-page/Mobile/1.webp",
-    alt: "Family wearing custom silicone wristbands",
+    alt: "Island delivery of wristbands in Sri Lanka",
+    heading: "From Our Hands to Yours – Fast, Islandwide Delivery.",
+    subheading:
+      "Wherever you are in Sri Lanka, your wristbands reach you on time.",
+    textPosition: "right-bottom",
   },
   {
     desktopImage: "/Final-Web-Images/Images/Home-page/Lap/2.webp",
     tabletImage: "/Final-Web-Images/Images/Home-page/tab/2.webp",
     mobileImage: "/Final-Web-Images/Images/Home-page/Mobile/2.webp",
-    alt: "Island delivery of wristbands in Sri Lanka",
+    alt: "Family wearing custom silicone wristbands",
+    heading: "One Band, All Ages. One Style, Endless Smiles.",
+    subheading:
+      "Silicone solutions for kids, teens, and adults—perfect for everyone.",
+    textPosition: "right-top",
   },
   {
     desktopImage: "/Final-Web-Images/Images/Home-page/Lap/3.webp",
     tabletImage: "/Final-Web-Images/Images/Home-page/tab/3.webp",
     mobileImage: "/Final-Web-Images/Images/Home-page/Mobile/3.webp",
     alt: "Events identification bracelets",
+    heading: "No Design? No Problem. We'll Create It With You.",
+    subheading:
+      "Enjoy free design support with unlimited revisions—stress-free ordering.",
+    textPosition: "right-bottom",
   },
   {
     desktopImage: "/Final-Web-Images/Images/Home-page/Lap/4.webp",
     tabletImage: "/Final-Web-Images/Images/Home-page/tab/4.webp",
     mobileImage: "/Final-Web-Images/Images/Home-page/Mobile/4.webp",
-    alt: "Free handbands designs support",
+    alt: "Events identification bracelets",
+    heading: "Events End. Memories Last. Wristbands Make It Happen.",
+    subheading:
+      "Turn every gathering into a lasting memory with custom wristbands.",
+    textPosition: "right-bottom",
   },
 ];
 
-// Image aspect ratios
 const IMAGE_RATIOS = {
-  desktop: 3840 / 1600, // 2.4 (ultra-wide)
-  tablet: 1080 / 1350, // 0.8 (portrait)
-  mobile: 900 / 1200, // 0.75 (portrait)
+  desktop: 3840 / 1600,
+  tablet: 1080 / 1350,
+  mobile: 900 / 1200,
 };
 
 export function HeroCarousel() {
@@ -48,14 +63,12 @@ export function HeroCarousel() {
       const screenHeight = window.innerHeight;
       const screenRatio = screenWidth / screenHeight;
 
-      // Calculate the difference between screen ratio and each image ratio
       const differences = {
         desktop: Math.abs(screenRatio - IMAGE_RATIOS.desktop),
         tablet: Math.abs(screenRatio - IMAGE_RATIOS.tablet),
         mobile: Math.abs(screenRatio - IMAGE_RATIOS.mobile),
       };
 
-      // Find the image type with the smallest difference
       const closest = Object.entries(differences).reduce((a, b) =>
         a[1] < b[1] ? a : b
       )[0];
@@ -101,8 +114,32 @@ export function HeroCarousel() {
     }
   };
 
+  const getTextPositionClasses = (position) => {
+    switch (position) {
+      case "right-bottom":
+        return "absolute bottom-6 md:bottom-8 right-0 px-4 md:px-8 lg:px-12 text-right flex justify-end";
+      case "right-top":
+        return "absolute top-6 md:top-8 right-0 px-4 md:px-8 lg:px-12 text-right flex justify-end";
+      default:
+        return "absolute bottom-6 md:bottom-8 right-0 px-4 md:px-8 lg:px-12 text-right flex justify-end";
+    }
+  };
+
   return (
     <div className="relative w-full h-full overflow-hidden group">
+      <style>{`
+        @keyframes slideInText {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+
       {/* Slides Container */}
       <div className="relative w-full h-full">
         {slides.map((slide, index) => (
@@ -130,13 +167,12 @@ export function HeroCarousel() {
               />
             </div>
 
-            {/* Gradient overlay for better text visibility */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none" />
           </div>
         ))}
       </div>
 
-      {/* Navigation Arrows - Hidden on mobile, visible on hover for desktop */}
+      {/* Navigation Arrows */}
       <button
         onClick={goToPrevious}
         className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -169,22 +205,94 @@ export function HeroCarousel() {
         ))}
       </div>
 
-      {/* Content Overlay */}
-      <div className="absolute bottom-20 md:bottom-24 left-0 right-0 px-4 md:px-8 lg:px-12 z-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center md:text-right text-white md:ml-auto md:max-w-2xl">
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight drop-shadow-2xl">
-              Silicone solutions for kids, teens, and adults—perfect for
-              everyone.
-            </h1>
+      {/* Dynamic Content Overlay */}
+      <div className="absolute inset-0 z-20 pointer-events-none">
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-all duration-700 ease-out ${
+              index === currentSlide
+                ? "opacity-100"
+                : "opacity-0 pointer-events-none"
+            }`}
+          >
+            <div className={getTextPositionClasses(slide.textPosition)}>
+              <div className="max-w-3xl lg:max-w-4xl">
+                {/* Decorative accent */}
+                <div
+                  className={`inline-block mb-3 transition-all duration-500 ${
+                    index === currentSlide
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 -translate-y-4"
+                  }`}
+                  style={{ transitionDelay: "100ms" }}
+                >
+                  <div className="h-1 w-16 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full"></div>
+                </div>
+
+                {/* Heading */}
+                <h2
+                  className={`text-white font-bold leading-tight mb-3 md:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl transition-all duration-500 ${
+                    index === currentSlide
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-8"
+                  }`}
+                  style={{
+                    textShadow:
+                      "0 4px 20px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5)",
+                    transitionDelay: "200ms",
+                  }}
+                >
+                  {slide.heading}
+                </h2>
+
+                {/* Subheading with icon */}
+                <div
+                  className={`flex items-start gap-2 transition-all duration-500 justify-end ${
+                    index === currentSlide
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-8"
+                  }`}
+                  style={{ transitionDelay: "300ms" }}
+                >
+                  <p
+                    className="text-white/95 font-medium leading-relaxed text-base sm:text-lg md:text-xl lg:text-2xl"
+                    style={{
+                      textShadow:
+                        "0 2px 12px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.5)",
+                    }}
+                  >
+                    {slide.subheading}
+                  </p>
+                  <span className="text-blue-400 text-xl md:text-2xl mt-1 flex-shrink-0">
+                    🔷
+                  </span>
+                </div>
+
+                {/* Decorative bottom accent */}
+                <div
+                  className={`mt-4 flex justify-end transition-all duration-500 ${
+                    index === currentSlide
+                      ? "opacity-100 scale-x-100"
+                      : "opacity-0 scale-x-0"
+                  }`}
+                  style={{
+                    transitionDelay: "400ms",
+                    transformOrigin: "right",
+                  }}
+                >
+                  <div className="h-0.5 w-24 bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
 
-      {/* Debug indicator - Remove in production */}
-      {/* <div className="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 rounded text-xs z-30">
+      {/* Debug indicator */}
+      <div className="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 rounded text-xs z-30">
         Using: {bestImageType}
-      </div> */}
+      </div>
     </div>
   );
 }
