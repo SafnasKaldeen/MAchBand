@@ -1,9 +1,21 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Phone } from "lucide-react";
+import { Phone, Menu, X } from "lucide-react";
 
 export default function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header className="border-b border-white/10 bg-white/80 backdrop-blur-md sticky top-0 z-50 h-20 px-6">
       <div className="w-full h-full">
@@ -48,7 +60,7 @@ export default function Header() {
               </Link>
             </nav>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             <a
               href="tel:+94 070 492 5375"
               className="hidden md:flex items-center gap-2 text-sm font-medium text-gray-900"
@@ -66,15 +78,80 @@ export default function Header() {
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
               </svg>
             </Link>
+
+            {/* Get Quotation Button - Always Visible */}
             <Link
               href="https://wa.me/94704925375?text=Hi%20there!%20I%27m%20interested%20in%20getting%20a%20quotation%20for%20your%20wrist%20bands?"
               target="_blank"
-              className="inline-block bg-amber-300 font-bold text-black px-5 py-2 rounded-lg shadow-md hover:bg-amber-400 transition-colors"
+              className="inline-block bg-amber-300 font-bold text-black px-3 md:px-5 py-2 rounded-lg shadow-md hover:bg-amber-400 transition-colors text-xs md:text-base whitespace-nowrap"
             >
-              Get a Quotation
+              Get Quotation
             </Link>
+
+            {/* Mobile Menu Button - More Visible */}
+            <button
+              onClick={toggleMobileMenu}
+              className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg bg-blue-500 text-white hover:bg-blue-600 shadow-lg transition-all active:scale-95"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
           </div>
         </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          onClick={closeMobileMenu}
+        ></div>
+      )}
+
+      {/* Mobile Menu Slide-out */}
+      <div
+        className={`fixed top-20 right-0 h-[calc(100vh-5rem)] w-64 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-50 md:hidden ${
+          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <nav className="flex flex-col p-6 gap-6">
+          <Link
+            href="/products"
+            onClick={closeMobileMenu}
+            className="text-lg font-bold text-gray-900 hover:text-blue-400 transition-colors py-2 border-b border-gray-200"
+          >
+            Products
+          </Link>
+          <Link
+            href="/gallery"
+            onClick={closeMobileMenu}
+            className="text-lg font-bold text-gray-900 hover:text-blue-400 transition-colors py-2 border-b border-gray-200"
+          >
+            Gallery
+          </Link>
+          <Link
+            href="/about"
+            onClick={closeMobileMenu}
+            className="text-lg font-bold text-gray-900 hover:text-blue-400 transition-colors py-2 border-b border-gray-200"
+          >
+            About Us
+          </Link>
+
+          {/* Mobile Contact Info */}
+          <div className="mt-4 pt-4 border-t border-gray-200">
+            <a
+              href="tel:+94 070 492 5375"
+              className="flex items-center gap-2 text-sm font-medium text-gray-900 py-2"
+            >
+              <Phone className="h-4 w-4" />
+              070 492 5375
+            </a>
+          </div>
+        </nav>
       </div>
     </header>
   );
