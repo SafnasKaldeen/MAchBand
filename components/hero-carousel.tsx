@@ -6,16 +6,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
-    desktopImage: "/Final-Web-Images/Images/Home-page/Lap/1.webp",
-    tabletImage: "/Final-Web-Images/Images/Home-page/tab/1.webp",
-    mobileImage: "/Final-Web-Images/Images/Home-page/Mobile/1.webp",
-    alt: "Island delivery of wristbands in Sri Lanka",
-    heading: "From Our Hands to Yours – Fast, Islandwide Delivery.",
-    subheading:
-      "Wherever you are in Sri Lanka, your wristbands reach you on time.",
-    textPosition: "right-bottom",
-  },
-  {
     desktopImage: "/Final-Web-Images/Images/Home-page/Lap/2.webp",
     tabletImage: "/Final-Web-Images/Images/Home-page/tab/2.webp",
     mobileImage: "/Final-Web-Images/Images/Home-page/Mobile/2.webp",
@@ -25,6 +15,17 @@ const slides = [
       "Silicone solutions for kids, teens, and adults—perfect for everyone.",
     textPosition: "right-top",
   },
+  {
+    desktopImage: "/Final-Web-Images/Images/Home-page/Lap/1.webp",
+    tabletImage: "/Final-Web-Images/Images/Home-page/tab/1.webp",
+    mobileImage: "/Final-Web-Images/Images/Home-page/Mobile/1.webp",
+    alt: "Island delivery of wristbands in Sri Lanka",
+    heading: "From Our Hands to Yours – Fast, Islandwide Delivery.",
+    subheading:
+      "Wherever you are in Sri Lanka, your wristbands reach you on time.",
+    textPosition: "right-bottom",
+  },
+
   {
     desktopImage: "/Final-Web-Images/Images/Home-page/Lap/3.webp",
     tabletImage: "/Final-Web-Images/Images/Home-page/tab/3.webp",
