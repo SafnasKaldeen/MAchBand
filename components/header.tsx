@@ -104,55 +104,68 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu - Portal Style Overlay */}
       {isMobileMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-40 md:hidden"
-          onClick={closeMobileMenu}
-        ></div>
+        <>
+          {/* Backdrop Overlay */}
+          <div
+            className="fixed inset-0 bg-black/50 z-[60] md:hidden"
+            onClick={closeMobileMenu}
+          ></div>
+
+          {/* Mobile Menu Slide-out */}
+          <div className="fixed top-0 right-0 h-screen w-64 bg-white shadow-2xl z-[70] md:hidden animate-slide-in">
+            <nav className="flex flex-col p-6 gap-6">
+              <Link
+                href="/products"
+                onClick={closeMobileMenu}
+                className="text-lg font-bold text-gray-900 hover:text-blue-400 transition-colors py-2 border-b border-gray-200"
+              >
+                Products
+              </Link>
+              <Link
+                href="/gallery"
+                onClick={closeMobileMenu}
+                className="text-lg font-bold text-gray-900 hover:text-blue-400 transition-colors py-2 border-b border-gray-200"
+              >
+                Gallery
+              </Link>
+              <Link
+                href="/about"
+                onClick={closeMobileMenu}
+                className="text-lg font-bold text-gray-900 hover:text-blue-400 transition-colors py-2 border-b border-gray-200"
+              >
+                About Us
+              </Link>
+
+              {/* Mobile Contact Info */}
+              <div className="mt-4 pt-4 border-t border-gray-200">
+                <a
+                  href="tel:+94 070 492 5375"
+                  className="flex items-center gap-2 text-sm font-medium text-gray-900 py-2"
+                >
+                  <Phone className="h-4 w-4" />
+                  070 492 5375
+                </a>
+              </div>
+            </nav>
+          </div>
+        </>
       )}
 
-      {/* Mobile Menu Slide-out */}
-      <div
-        className={`fixed top-0 right-0 h-screen w-64 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-50 md:hidden ${
-          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <nav className="flex flex-col p-6 gap-6">
-          <Link
-            href="/products"
-            onClick={closeMobileMenu}
-            className="text-lg font-bold text-gray-900 hover:text-blue-400 transition-colors py-2 border-b border-gray-200"
-          >
-            Products
-          </Link>
-          <Link
-            href="/gallery"
-            onClick={closeMobileMenu}
-            className="text-lg font-bold text-gray-900 hover:text-blue-400 transition-colors py-2 border-b border-gray-200"
-          >
-            Gallery
-          </Link>
-          <Link
-            href="/about"
-            onClick={closeMobileMenu}
-            className="text-lg font-bold text-gray-900 hover:text-blue-400 transition-colors py-2 border-b border-gray-200"
-          >
-            About Us
-          </Link>
-
-          {/* Mobile Contact Info */}
-          <div className="mt-4 pt-4 border-t border-gray-200">
-            <a
-              href="tel:+94 070 492 5375"
-              className="flex items-center gap-2 text-sm font-medium text-gray-900 py-2"
-            >
-              <Phone className="h-4 w-4" />
-              070 492 5375
-            </a>
-          </div>
-        </nav>
-      </div>
+      <style jsx>{`
+        @keyframes slide-in {
+          from {
+            transform: translateX(100%);
+          }
+          to {
+            transform: translateX(0);
+          }
+        }
+        .animate-slide-in {
+          animation: slide-in 0.3s ease-out forwards;
+        }
+      `}</style>
     </header>
   );
 }
