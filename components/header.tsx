@@ -120,6 +120,13 @@ export default function Header() {
       >
         <nav className="flex flex-col p-6 gap-6">
           <Link
+            href="/"
+            onClick={closeMobileMenu}
+            className="text-lg font-bold text-gray-900 hover:text-blue-400 transition-colors py-2 border-b border-gray-200"
+          >
+            Home
+          </Link>
+          <Link
             href="/products"
             onClick={closeMobileMenu}
             className="text-lg font-bold text-gray-900 hover:text-blue-400 transition-colors py-2 border-b border-gray-200"
