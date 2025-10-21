@@ -52,7 +52,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {[
               {
-                title: "Debossed",
+                title: "Debossed Ink-Filled",
                 subtitle: "Classic Engraved",
                 image:
                   "/Final-Web-Images/Images/Home-page-Imprint-section/silicon-deboss-wristbands-lanka.webp",
@@ -60,7 +60,7 @@ export default function Home() {
                 price: "LKR 56.00",
               },
               {
-                title: "Embossed",
+                title: "Embossed Silicone",
                 subtitle: "Raised & Colorful",
                 image:
                   "/Final-Web-Images/Images/Home-page-Imprint-section/emboss-print-hand-bands.webp",
@@ -68,7 +68,7 @@ export default function Home() {
                 price: "LKR 58.00",
               },
               {
-                title: "Screen Printing",
+                title: "Screen Printed",
                 subtitle: "Vibrant & Detailed",
                 image:
                   "/Final-Web-Images/Images/Home-page-Imprint-section/Screen-printed-bangles.webp",
@@ -76,7 +76,7 @@ export default function Home() {
                 price: "LKR 45.00",
               },
               {
-                title: "Full color CMYK Printed",
+                title: "Full-Color CMYK Printed",
                 subtitle: "Bold Raised Design",
                 image:
                   "/Final-Web-Images/Images/Home-page-Imprint-section/CMYK-full-color-print-bracelets.webp",
