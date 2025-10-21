@@ -52,32 +52,36 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {[
               {
-                title: "Debossed Ink-Filled",
+                title: "Debossed",
                 subtitle: "Classic Engraved",
                 image:
                   "/Final-Web-Images/Images/Home-page-Imprint-section/silicon-deboss-wristbands-lanka.webp",
                 href: "/products/debossed",
+                price: "LKR 56.00",
               },
               {
-                title: "Embossed Silicone",
+                title: "Embossed",
                 subtitle: "Raised & Colorful",
                 image:
                   "/Final-Web-Images/Images/Home-page-Imprint-section/emboss-print-hand-bands.webp",
                 href: "/products/embossed-printed",
+                price: "LKR 58.00",
               },
               {
-                title: "Screen Printed",
+                title: "Screen Printing",
                 subtitle: "Vibrant & Detailed",
                 image:
                   "/Final-Web-Images/Images/Home-page-Imprint-section/Screen-printed-bangles.webp",
                 href: "/products/silk",
+                price: "LKR 45.00",
               },
               {
-                title: "Full-Color CMYK Printed",
+                title: "Full color CMYK Printed",
                 subtitle: "Bold Raised Design",
                 image:
                   "/Final-Web-Images/Images/Home-page-Imprint-section/CMYK-full-color-print-bracelets.webp",
                 href: "/products/cmyk",
+                price: "LKR 86.00",
               },
             ].map((band, index) => (
               <Link key={index} href={band.href} className="group">
@@ -101,7 +105,7 @@ export default function Home() {
                       </span>
 
                       <span className="bg-blue-600/80 text-white text-[11px] font-medium px-2 py-0.5 rounded-full backdrop-blur-sm shadow-md">
-                        LKR 56.00
+                        {band.price}
                       </span>
                     </div>
 
