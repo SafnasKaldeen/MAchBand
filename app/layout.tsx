@@ -87,6 +87,8 @@ export default function RootLayout({
               url: "https://machwristbands.lk",
               telephone: "+94-070 492 5375",
               priceRange: "$$",
+              description:
+                "Sri Lanka’s trusted supplier for custom silicone and event wristbands.",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "No. 1, 4 Bandaranayake Mawatha",
