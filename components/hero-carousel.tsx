@@ -16,16 +16,15 @@ const slides = [
     textPosition: "right-top",
   },
   {
-    desktopImage: "/Final-Web-Images/Images/Home-page/Lap/1.webp",
-    tabletImage: "/Final-Web-Images/Images/Home-page/tab/1.webp",
-    mobileImage: "/Final-Web-Images/Images/Home-page/Mobile/1.webp",
-    alt: "Island delivery of wristbands in Sri Lanka",
-    heading: "From Our Hands to Yours – Fast, Islandwide Delivery.",
+    desktopImage: "/Final-Web-Images/Images/Home-page/Lap/4.webp",
+    tabletImage: "/Final-Web-Images/Images/Home-page/tab/4.webp",
+    mobileImage: "/Final-Web-Images/Images/Home-page/Mobile/4.webp",
+    alt: "Events identification bracelets",
+    heading: "Events End. Memories Last. Wristbands Make It Happen.",
     subheading:
-      "Wherever you are in Sri Lanka, your wristbands reach you on time.",
+      "Turn every gathering into a lasting memory with custom wristbands.",
     textPosition: "right-bottom",
   },
-
   {
     desktopImage: "/Final-Web-Images/Images/Home-page/Lap/3.webp",
     tabletImage: "/Final-Web-Images/Images/Home-page/tab/3.webp",
@@ -37,13 +36,13 @@ const slides = [
     textPosition: "right-bottom",
   },
   {
-    desktopImage: "/Final-Web-Images/Images/Home-page/Lap/4.webp",
-    tabletImage: "/Final-Web-Images/Images/Home-page/tab/4.webp",
-    mobileImage: "/Final-Web-Images/Images/Home-page/Mobile/4.webp",
-    alt: "Events identification bracelets",
-    heading: "Events End. Memories Last. Wristbands Make It Happen.",
+    desktopImage: "/Final-Web-Images/Images/Home-page/Lap/1.webp",
+    tabletImage: "/Final-Web-Images/Images/Home-page/tab/1.webp",
+    mobileImage: "/Final-Web-Images/Images/Home-page/Mobile/1.webp",
+    alt: "Island delivery of wristbands in Sri Lanka",
+    heading: "From Our Hands to Yours – Fast, Islandwide Delivery.",
     subheading:
-      "Turn every gathering into a lasting memory with custom wristbands.",
+      "Wherever you are in Sri Lanka, your wristbands reach you on time.",
     textPosition: "right-bottom",
   },
 ];
