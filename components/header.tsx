@@ -85,7 +85,7 @@ export default function Header() {
               target="_blank"
               className="inline-block bg-amber-300 font-bold text-black px-3 md:px-5 py-2 rounded-lg shadow-md hover:bg-amber-400 transition-colors text-xs md:text-base whitespace-nowrap"
             >
-              Get Quote
+              Get Quotation
             </Link>
 
             {/* Mobile Menu Button - More Visible */}
