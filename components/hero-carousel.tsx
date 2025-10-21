@@ -6,9 +6,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
-    desktopImage: "/Final-Web-Images/Images/Home-page/Lap/2.webp",
-    tabletImage: "/Final-Web-Images/Images/Home-page/tab/2.webp",
-    mobileImage: "/Final-Web-Images/Images/Home-page/Mobile/2.webp",
+    desktopImage: "/Final-Web-Images/Images/Home-page/Lap/1.webp",
+    tabletImage: "/Final-Web-Images/Images/Home-page/tab/1.webp",
+    mobileImage: "/Final-Web-Images/Images/Home-page/Mobile/1.webp",
     alt: "Family wearing custom silicone wristbands",
     heading: "One Band, All Ages. One Style, Endless Smiles.",
     subheading:
@@ -16,9 +16,9 @@ const slides = [
     textPosition: "right-top",
   },
   {
-    desktopImage: "/Final-Web-Images/Images/Home-page/Lap/4.webp",
-    tabletImage: "/Final-Web-Images/Images/Home-page/tab/4.webp",
-    mobileImage: "/Final-Web-Images/Images/Home-page/Mobile/4.webp",
+    desktopImage: "/Final-Web-Images/Images/Home-page/Lap/2.webp",
+    tabletImage: "/Final-Web-Images/Images/Home-page/tab/2.webp",
+    mobileImage: "/Final-Web-Images/Images/Home-page/Mobile/2.webp",
     alt: "Events identification bracelets",
     heading: "Events End. Memories Last. Wristbands Make It Happen.",
     subheading:
@@ -36,9 +36,9 @@ const slides = [
     textPosition: "right-bottom",
   },
   {
-    desktopImage: "/Final-Web-Images/Images/Home-page/Lap/1.webp",
-    tabletImage: "/Final-Web-Images/Images/Home-page/tab/1.webp",
-    mobileImage: "/Final-Web-Images/Images/Home-page/Mobile/1.webp",
+    desktopImage: "/Final-Web-Images/Images/Home-page/Lap/4.webp",
+    tabletImage: "/Final-Web-Images/Images/Home-page/tab/4.webp",
+    mobileImage: "/Final-Web-Images/Images/Home-page/Mobile/4.webp",
     alt: "Island delivery of wristbands in Sri Lanka",
     heading: "From Our Hands to Yours – Fast, Islandwide Delivery.",
     subheading:
