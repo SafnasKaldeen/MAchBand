@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import Script from "next/script";
 import "./globals.css";
 import { getSEOTags } from "@/lib/seo";
+import PageLoader from "@/components/loader";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -69,14 +70,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={montserrat.variable}>
       <head>
-        {/* <meta
-          name="google-site-verification"
-          content="VxeBOxrzphZuT3IxM9IzD5JoEkE3nmMwjq9kjQuhr9Q"
-        />
-        <meta
-          name="google-site-verification"
-          content="HTf79Ck0A0krKQhu0Z-PEp_GSRgALVQfmS0f4m72HK8"
-        /> */}
         <meta
           name="google-site-verification"
           content="sX_3WPpd6TJ3xMwzjv1KpDXu_2CgP0PLjSYbNn_P_Bs"
@@ -92,7 +85,7 @@ export default function RootLayout({
               image: "/Mach-Wristband-Logo.png",
               "@id": "https://machwristbands.lk",
               url: "https://machwristbands.lk",
-              telephone: "+94-070 492 5375", // Add your phone
+              telephone: "+94-070 492 5375",
               priceRange: "$$",
               address: {
                 "@type": "PostalAddress",
@@ -129,7 +122,6 @@ export default function RootLayout({
           }}
         />
 
-        {/* Canonical URL */}
         <link rel="canonical" href={`https://machwristbands.lk`} />
 
         <link rel="alternate" hrefLang="en" href="https://machwristbands.lk" />
@@ -144,7 +136,6 @@ export default function RootLayout({
           href="https://machwristbands.lk/ta"
         />
 
-        {/* Site Favicon */}
         <link rel="icon" href="/Mach-Wristband-Logo.png" sizes="any" />
         <link rel="apple-touch-icon" href="/Mach-Wristband-Logo.png" />
 
@@ -160,7 +151,6 @@ export default function RootLayout({
           content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
         />
 
-        {/* Preload Montserrat Font for Faster Loading */}
         <link
           rel="preload"
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
@@ -170,7 +160,7 @@ export default function RootLayout({
       </head>
 
       <body className={montserrat.className}>
-        <Suspense fallback={null}>{children}</Suspense>
+        <Suspense fallback={<PageLoader />}>{children}</Suspense>
         <Analytics />
       </body>
     </html>

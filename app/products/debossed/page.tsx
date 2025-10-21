@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Phone, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import Header from "@/components/header";
 import ProductQuickNav from "@/components/ProductQuickNav";
+import { Phone, MessageCircle, X } from "lucide-react";
 
 export default function DebossedPage() {
   const [visibleSections, setVisibleSections] = useState(new Set());
@@ -669,26 +669,6 @@ export default function DebossedPage() {
               ))}
             </div>
           </div>
-
-          {/* Modal for Enlarged Image */}
-          {selectedImage && (
-            <div
-              className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-              onClick={() => setSelectedImage(null)}
-            >
-              <button
-                className="absolute top-6 right-6 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center font-bold hover:bg-gray-200 transition-colors"
-                onClick={() => setSelectedImage(null)}
-              >
-                ✕
-              </button>
-              <img
-                src={selectedImage}
-                alt="Enlarged view"
-                className="max-w-4xl max-h-[80vh] rounded-lg object-contain"
-              />
-            </div>
-          )}
         </div>
       </section>
 
@@ -719,6 +699,44 @@ export default function DebossedPage() {
           </div>
         </div>
       </section>
+
+      {/* Elegant Lightbox Modal - Place this OUTSIDE all sections */}
+      {selectedImage && (
+        <div className="fixed top-20 left-0 right-0 bottom-0 bg-gradient-to-br from-blue-900/95 via-black/95 to-blue-950/95 z-50 flex flex-col items-center justify-center p-6 animate-in fade-in duration-300">
+          {/* Decorative Elements */}
+          <div className="absolute top-0 left-0 w-64 h-64 bg-amber-300/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl" />
+
+          {/* Close Button */}
+          <button
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-6 right-6 text-white hover:text-amber-300 transition-all duration-300 z-10 bg-white/10 backdrop-blur-md rounded-full p-3 hover:bg-amber-300/20 hover:scale-110 shadow-lg"
+            aria-label="Close lightbox"
+          >
+            <X className="h-7 w-7" />
+          </button>
+
+          {/* Main Content Container */}
+          <div className="flex-1 flex flex-col items-center justify-center w-full max-w-7xl">
+            {/* Image Container with Elegant Frame */}
+            <div className="relative bg-white/5 backdrop-blur-sm rounded-3xl p-6 shadow-2xl border border-white/10 animate-in zoom-in-95 duration-500 max-h-[70vh] flex items-center justify-center">
+              <div className="relative max-w-full max-h-full overflow-hidden rounded-2xl shadow-2xl">
+                <img
+                  src={selectedImage}
+                  alt="Enlarged view"
+                  className="max-w-full max-h-[60vh] w-auto h-auto object-contain"
+                />
+              </div>
+
+              {/* Accent corners */}
+              <div className="absolute top-3 left-3 w-8 h-8 border-t-2 border-l-2 border-amber-300 rounded-tl-xl" />
+              <div className="absolute top-3 right-3 w-8 h-8 border-t-2 border-r-2 border-amber-300 rounded-tr-xl" />
+              <div className="absolute bottom-3 left-3 w-8 h-8 border-b-2 border-l-2 border-amber-300 rounded-bl-xl" />
+              <div className="absolute bottom-3 right-3 w-8 h-8 border-b-2 border-r-2 border-amber-300 rounded-br-xl" />
+            </div>
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
         @keyframes slideUp {
