@@ -4,6 +4,7 @@ import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/header";
 import Link from "next/link";
+import Footer from "@/components/Footer";
 
 // Product images data
 const productImages = [
@@ -264,25 +265,7 @@ export default function ProductsPage() {
       )}
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-50">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-900">
-            Ready to Order Your Custom Wristbands?
-          </h2>
-          <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-            Contact us today for a free quote and let's create the perfect
-            wristbands for your needs
-          </p>
-          <a
-            href="https://wa.me/+94704925375"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-amber-300 font-bold text-black px-8 py-4 rounded-lg shadow-md hover:bg-amber-400 transition-colors text-lg"
-          >
-            Get a Free Quote
-          </a>
-        </div>
-      </section>
+      <Footer />
     </div>
   );
 }

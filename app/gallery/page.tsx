@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Phone, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { galleryImages } from "@/data/galleryImages";
 import Header from "@/components/header";
+import Footer from "@/components/Footer";
 
 export default function GalleryPage() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -222,25 +223,7 @@ export default function GalleryPage() {
         </div>
       )}
 
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-50">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-900">
-            Ready to Create Your Custom Wristbands?
-          </h2>
-          <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-            Get a free quote and bring your vision to life with premium quality
-            silicone wristbands
-          </p>
-          <Link
-            href="https://wa.me/+94704925375"
-            target="_blank"
-            className="inline-block bg-amber-300 font-bold text-black px-8 py-4 rounded-lg shadow-md hover:bg-amber-400 transition-colors text-lg"
-          >
-            Get a Free Quote
-          </Link>
-        </div>
-      </section>
+      <Footer />
     </div>
   );
 }
