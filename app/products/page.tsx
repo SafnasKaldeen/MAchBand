@@ -100,13 +100,16 @@ export default function ProductsPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-blue-900">
-              Our Premium Wristband Collection
+              Explore Our Custom Silicone Creations
             </h1>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Discover our extensive range of custom silicone wristbands
-              designed to meet every need. From vibrant CMYK prints to elegant
-              debossed designs, we offer the perfect solution for your events,
-              promotions, and awareness campaigns.
+              Discover our wide range of premium silicone and PVC promotional
+              products — from custom wristbands and bangles to keychains and
+              more. With advanced manufacturing and precise craftsmanship, we
+              bring your ideas to life with unmatched quality and detail.
+              Whether for branding, events, or giveaways, our products are
+              designed to impress and built to last. Contact our team to explore
+              limitless customization possibilities tailored to your needs.
             </p>
           </div>
         </div>

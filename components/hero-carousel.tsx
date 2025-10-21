@@ -120,13 +120,12 @@ export function HeroCarousel() {
       return "absolute bottom-6 md:bottom-8 right-0 px-4 md:px-8 lg:px-12 text-right flex justify-end";
     }
 
-    // Tablet: Swap positions for slides 1 and 4 (indices 2 and 3)
-    if (bestImageType === "tablet" && (slideIndex === 2 || slideIndex === 3)) {
-      const finalPosition =
-        position === "right-top" ? "right-bottom" : "right-top";
-      return finalPosition === "right-bottom"
-        ? "absolute bottom-6 md:bottom-8 right-0 px-4 md:px-8 lg:px-12 text-right flex justify-end"
-        : "absolute top-6 md:top-8 right-0 px-4 md:px-8 lg:px-12 text-right flex justify-end";
+    // Tablet: Swap positions only for slide 2 (index 1), keep slide 4 (index 3) as right-bottom
+    // Tablet: slides 2 and 4 always bottom
+    if (bestImageType === "tablet") {
+      if (slideIndex === 1 || slideIndex === 3) {
+        return "absolute bottom-6 md:bottom-8 right-0 px-4 md:px-8 lg:px-12 text-right flex justify-end";
+      }
     }
 
     // Desktop and tablet (non-swapped slides): Use original position
