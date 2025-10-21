@@ -85,7 +85,7 @@ export default function Header() {
               target="_blank"
               className="inline-block bg-amber-300 font-bold text-black px-3 md:px-5 py-2 rounded-lg shadow-md hover:bg-amber-400 transition-colors text-xs md:text-base whitespace-nowrap"
             >
-              Get Quotation
+              Get Quote
             </Link>
 
             {/* Mobile Menu Button - More Visible */}
@@ -114,18 +114,11 @@ export default function Header() {
 
       {/* Mobile Menu Slide-out */}
       <div
-        className={`fixed top-20 right-0 h-[calc(100vh-5rem)] w-64 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-50 md:hidden ${
+        className={`fixed top-0 right-0 h-screen w-64 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-50 md:hidden ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <nav className="flex flex-col p-6 gap-6">
-          <Link
-            href="/"
-            onClick={closeMobileMenu}
-            className="text-lg font-bold text-gray-900 hover:text-blue-400 transition-colors py-2 border-b border-gray-200"
-          >
-            Home
-          </Link>
           <Link
             href="/products"
             onClick={closeMobileMenu}
