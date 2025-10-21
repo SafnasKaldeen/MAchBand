@@ -117,6 +117,13 @@ export default function Header() {
           <div className="fixed top-0 right-0 h-screen w-64 bg-white shadow-2xl z-[70] md:hidden animate-slide-in">
             <nav className="flex flex-col p-6 gap-6">
               <Link
+                href="/#home"
+                onClick={closeMobileMenu}
+                className="text-lg font-bold text-gray-900 hover:text-blue-400 transition-colors py-2 border-b border-gray-200"
+              >
+                Home
+              </Link>
+              <Link
                 href="/products"
                 onClick={closeMobileMenu}
                 className="text-lg font-bold text-gray-900 hover:text-blue-400 transition-colors py-2 border-b border-gray-200"
