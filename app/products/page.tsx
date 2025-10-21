@@ -127,7 +127,8 @@ export default function ProductsPage() {
                   <img
                     src={product.src}
                     alt={product.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                    style={{ objectPosition: "center center" }}
                   />
 
                   {/* Hover Overlay */}
@@ -138,13 +139,15 @@ export default function ProductsPage() {
                 </div>
 
                 {/* Title Section */}
-                <div className="p-5 bg-gradient-to-b from-white to-blue-50">
-                  <h3 className="font-bold text-base text-blue-900 leading-tight group-hover:text-blue-700 transition-colors">
-                    {product.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    Click to view details
-                  </p>
+                <div className="bg-gradient-to-b from-white to-blue-200 h-full">
+                  <div className="p-5">
+                    <h3 className="font-bold text-base text-blue-900 leading-tight group-hover:text-blue-700 transition-colors">
+                      {product.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      Click to view details
+                    </p>
+                  </div>
                 </div>
               </button>
             ))}

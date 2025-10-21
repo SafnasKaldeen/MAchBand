@@ -114,7 +114,22 @@ export function HeroCarousel() {
     }
   };
 
-  const getTextPositionClasses = (position) => {
+  const getTextPositionClasses = (position, slideIndex) => {
+    // Mobile: Always bottom
+    if (bestImageType === "mobile") {
+      return "absolute bottom-6 md:bottom-8 right-0 px-4 md:px-8 lg:px-12 text-right flex justify-end";
+    }
+
+    // Tablet: Swap positions for slides 2 and 4 (indices 1 and 3)
+    if (bestImageType === "tablet" && (slideIndex === 1 || slideIndex === 3)) {
+      const finalPosition =
+        position === "right-top" ? "right-bottom" : "right-top";
+      return finalPosition === "right-bottom"
+        ? "absolute bottom-6 md:bottom-8 right-0 px-4 md:px-8 lg:px-12 text-right flex justify-end"
+        : "absolute top-6 md:top-8 right-0 px-4 md:px-8 lg:px-12 text-right flex justify-end";
+    }
+
+    // Desktop and tablet (non-swapped slides): Use original position
     switch (position) {
       case "right-bottom":
         return "absolute bottom-6 md:bottom-8 right-0 px-4 md:px-8 lg:px-12 text-right flex justify-end";
@@ -216,7 +231,7 @@ export function HeroCarousel() {
                 : "opacity-0 pointer-events-none"
             }`}
           >
-            <div className={getTextPositionClasses(slide.textPosition)}>
+            <div className={getTextPositionClasses(slide.textPosition, index)}>
               <div className="max-w-3xl lg:max-w-4xl">
                 {/* Decorative accent */}
                 <div
@@ -231,20 +246,6 @@ export function HeroCarousel() {
                 </div>
 
                 {/* Heading */}
-                <h2
-                  className={`text-white font-bold leading-tight mb-3 md:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl transition-all duration-500 ${
-                    index === currentSlide
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-8"
-                  }`}
-                  style={{
-                    textShadow:
-                      "0 4px 20px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5)",
-                    transitionDelay: "200ms",
-                  }}
-                >
-                  {slide.heading}
-                </h2>
 
                 {/* Subheading with icon */}
                 <div
@@ -255,18 +256,20 @@ export function HeroCarousel() {
                   }`}
                   style={{ transitionDelay: "300ms" }}
                 >
-                  <p
-                    className="text-white/95 font-medium leading-relaxed text-base sm:text-lg md:text-xl lg:text-2xl"
+                  <h2
+                    className={`text-white font-bold leading-tight mb-3 md:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl transition-all duration-500 ${
+                      index === currentSlide
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-8"
+                    }`}
                     style={{
                       textShadow:
-                        "0 2px 12px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.5)",
+                        "0 4px 12px rgba(0,0,0,0.9), 0 2px 6px rgba(0,0,0,0.8), 0 8px 24px rgba(0,0,0,0.7), 0 0 40px rgba(0,0,0,0.5)",
+                      transitionDelay: "200ms",
                     }}
                   >
                     {slide.subheading}
-                  </p>
-                  <span className="text-blue-400 text-xl md:text-2xl mt-1 flex-shrink-0">
-                    🔷
-                  </span>
+                  </h2>
                 </div>
 
                 {/* Decorative bottom accent */}
@@ -291,7 +294,7 @@ export function HeroCarousel() {
 
       {/* Debug indicator */}
       {/* <div className="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 rounded text-xs z-30">
-        Using: {bestImageType}
+        Using: {bestImageType} | Slide: {currentSlide + 1}
       </div> */}
     </div>
   );
