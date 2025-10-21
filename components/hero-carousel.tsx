@@ -120,8 +120,8 @@ export function HeroCarousel() {
       return "absolute bottom-6 md:bottom-8 right-0 px-4 md:px-8 lg:px-12 text-right flex justify-end";
     }
 
-    // Tablet: Swap positions for slides 1 and 3 (indices 2 and 4)
-    if (bestImageType === "tablet" && (slideIndex === 2 || slideIndex === 4)) {
+    // Tablet: Swap positions for slides 1 and 4 (indices 2 and 3)
+    if (bestImageType === "tablet" && (slideIndex === 2 || slideIndex === 3)) {
       const finalPosition =
         position === "right-top" ? "right-bottom" : "right-top";
       return finalPosition === "right-bottom"
