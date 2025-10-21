@@ -117,7 +117,7 @@ export function HeroCarousel() {
   const getTextPositionClasses = (position, slideIndex) => {
     // Mobile: Always bottom
     if (bestImageType === "mobile") {
-      return "absolute bottom-6 md:bottom-8 right-0 px-4 md:px-8 lg:px-12 text-right flex justify-end";
+      return "absolute bottom-10 md:bottom-8 right-0 px-4 md:px-8 lg:px-12 text-right flex justify-end";
     }
 
     // Tablet: Swap positions for slides 2 and 4 (indices 1 and 3)
