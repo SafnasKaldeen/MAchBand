@@ -122,13 +122,6 @@
   body {
     @apply bg-background text-foreground;
   }
-  html, body {
-    overflow-x: clip;
-    width: 100%;
-  }
-  body {
-    position: relative;
-  }
 }
 
 
