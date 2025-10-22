@@ -5,8 +5,8 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="bg-gray-200 text-black py-12 relative overflow-hidden">
-      <div className="container mx-auto max-w-7xl px-0">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div className="container mx-auto max-w-[90vw] px-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-8">
           {/* Left Section - Logo and Description */}
           <div className="flex flex-col">
             <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center mb-6 shadow-lg">

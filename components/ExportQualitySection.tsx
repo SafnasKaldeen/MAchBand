@@ -4,7 +4,7 @@ export default function ExportQualitySection() {
   return (
     <section className="bg-gray-100 text-black">
       <div className="container mx-auto px-4">
-        <div className="max-w-8xl mx-auto">
+        <div className="max-w-[90vw] mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
             <p className="text-3xl font-bold mb-4 text-blue-900">

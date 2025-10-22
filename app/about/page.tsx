@@ -28,7 +28,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto text-center">
+          <div className="max-w-[90vw] mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-blue-900">
               About Mach Wristbands Lanka
             </h1>

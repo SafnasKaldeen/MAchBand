@@ -69,11 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={montserrat.variable}
-      style={{ overflowX: "hidden", maxWidth: "100vw" }}
-    >
+    <html lang="en" className={montserrat.variable}>
       <head>
         <meta
           name="google-site-verification"
@@ -166,10 +162,7 @@ export default function RootLayout({
         <meta name="author" content="Mach Wristbands Sri Lanka" />
       </head>
 
-      <body
-        className={montserrat.className}
-        style={{ overflowX: "hidden", maxWidth: "100vw", position: "relative" }}
-      >
+      <body className={montserrat.className}>
         <Suspense fallback={<PageLoader />}>
           <div className="fixed top-0 left-0 right-0 z-50 w-full">
             <Header />

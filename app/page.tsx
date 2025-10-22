@@ -39,7 +39,7 @@ export default function Home() {
 
       {/* Signature Imprint Styles */}
       <section id="products" className="py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 max-w-[90vw]">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text">
               Signature Imprint Styles
@@ -148,7 +148,7 @@ export default function Home() {
 
       {/* Why Choose Section */}
       <section className="py-20 bg-blue-50">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 max-w-[90vw]">
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
             Why Choose Mach Wristbands Lanka
           </h2>

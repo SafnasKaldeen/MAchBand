@@ -68,7 +68,7 @@ export default function TrustindexReviews() {
           </div>
 
           {/* Trustindex Widget Container */}
-          <div className="max-w-6xl mx-auto min-h-[400px] relative">
+          <div className="max-w-[90vw] mx-auto min-h-[400px] relative">
             {/* Loading indicator - shown only before script loads */}
             {!scriptLoaded && (
               <div className="flex justify-center items-center min-h-[400px]">

@@ -148,7 +148,7 @@ export default function EmbossedPage() {
                 </span>
               </div>
 
-              <div className="grid grid-cols-5 gap-4 max-w-6xl mb-8">
+              <div className="grid grid-cols-5 gap-4 max-w-[80vw] mb-8">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div
                     key={i}
@@ -207,7 +207,7 @@ export default function EmbossedPage() {
             : "opacity-0 translate-y-20"
         }`}
       >
-        <div className="container mx-auto max-w-5xl">
+        <div className="container mx-auto max-w-[80vw]">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
               What is Embossed Printing?
@@ -256,7 +256,7 @@ export default function EmbossedPage() {
             : "opacity-0 translate-y-20"
         }`}
       >
-        <div className="container mx-auto max-w-5xl">
+        <div className="container mx-auto max-w-[80vw]">
           <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">
             Available Wristband Widths
           </h2>
@@ -322,7 +322,7 @@ export default function EmbossedPage() {
             : "opacity-0 translate-y-20"
         }`}
       >
-        <div className="container mx-auto max-w-5xl">
+        <div className="container mx-auto max-w-[80vw]">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
               Our bands are made from 100% silicone and are the best quality you
@@ -354,7 +354,7 @@ export default function EmbossedPage() {
             : "opacity-0 translate-y-20"
         }`}
       >
-        <div className="container mx-auto max-w-6xl">
+        <div className="container mx-auto max-w-[80vw]">
           <div className="mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-3">
               Customization Options
@@ -486,7 +486,7 @@ export default function EmbossedPage() {
             : "opacity-0 translate-y-20"
         }`}
       >
-        <div className="container mx-auto max-w-6xl">
+        <div className="container mx-auto max-w-[80vw]">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-3">
               Product Characteristics
@@ -540,7 +540,7 @@ export default function EmbossedPage() {
             : "opacity-0 translate-y-20"
         }`}
       >
-        <div className="container mx-auto max-w-6xl">
+        <div className="container mx-auto max-w-[80vw]">
           <div className="mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-3">
               Advantages & Considerations
@@ -652,7 +652,7 @@ export default function EmbossedPage() {
             </p>
           </div>
 
-          <div className="max-w-5xl mx-auto mb-12">
+          <div className="max-w-[80vw] mx-auto mb-12">
             {/* Main Featured Image */}
             <div className="relative w-full mb-6">
               <div
