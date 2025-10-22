@@ -54,7 +54,7 @@ export default function PageLoader() {
             Mach Wristbands
           </h2>
           <p className="text-gray-400 text-sm md:text-base">
-            Creating your perfect band...
+            Looking for quality wristbands? You've come to the right place!
           </p>
         </div>
 

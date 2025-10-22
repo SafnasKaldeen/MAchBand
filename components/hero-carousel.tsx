@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import PageLoader from "@/components/loader";
 
 const slides = [
   {
@@ -55,10 +56,12 @@ const IMAGE_RATIOS = {
 
 export function HeroCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [bestImageType, setBestImageType] = useState("desktop");
+  const [bestImageType, setBestImageType] = useState(null);
+  const [isResolutionDetected, setIsResolutionDetected] = useState(false);
 
+  // Detect resolution FIRST before showing anything
   useEffect(() => {
-    const selectBestImage = () => {
+    const detectResolution = () => {
       const screenWidth = window.innerWidth;
       const screenHeight = window.innerHeight;
       const screenRatio = screenWidth / screenHeight;
@@ -74,21 +77,28 @@ export function HeroCarousel() {
       )[0];
 
       setBestImageType(closest);
+      setIsResolutionDetected(true);
     };
 
-    selectBestImage();
-    window.addEventListener("resize", selectBestImage);
+    // Run detection immediately
+    detectResolution();
 
-    return () => window.removeEventListener("resize", selectBestImage);
+    // Also listen for resize events
+    window.addEventListener("resize", detectResolution);
+
+    return () => window.removeEventListener("resize", detectResolution);
   }, []);
 
+  // Start carousel timer ONLY after resolution is detected
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 10000);
+    if (isResolutionDetected && bestImageType) {
+      const timer = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+      }, 10000);
 
-    return () => clearInterval(timer);
-  }, []);
+      return () => clearInterval(timer);
+    }
+  }, [isResolutionDetected, bestImageType]);
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
@@ -103,6 +113,8 @@ export function HeroCarousel() {
   };
 
   const getImageSrc = (slide) => {
+    if (!bestImageType) return null;
+
     switch (bestImageType) {
       case "mobile":
         return slide.mobileImage;
@@ -120,7 +132,6 @@ export function HeroCarousel() {
       return "absolute bottom-6 md:bottom-8 right-0 px-4 md:px-8 lg:px-12 text-right flex justify-end";
     }
 
-    // Tablet: Swap positions only for slide 2 (index 1), keep slide 4 (index 3) as right-bottom
     // Tablet: slides 2 and 4 always bottom
     if (bestImageType === "tablet") {
       if (slideIndex === 1 || slideIndex === 3) {
@@ -139,6 +150,16 @@ export function HeroCarousel() {
     }
   };
 
+  // Show loader UNTIL resolution is detected and image type is determined
+  if (!isResolutionDetected || !bestImageType) {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-gradient-to-b from-blue-50 to-white">
+        <PageLoader />
+      </div>
+    );
+  }
+
+  // Only render carousel AFTER resolution is detected
   return (
     <div className="relative w-full h-full overflow-hidden group">
       <style>{`
@@ -156,35 +177,43 @@ export function HeroCarousel() {
 
       {/* Slides Container */}
       <div className="relative w-full h-full">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-              index === currentSlide
-                ? "opacity-100 scale-100"
-                : "opacity-0 scale-105"
-            }`}
-          >
-            <div className="w-full h-full relative overflow-hidden">
-              <Image
-                src={getImageSrc(slide) || "/placeholder.svg"}
-                alt={slide.alt}
-                fill
-                className="object-cover"
-                style={{
-                  objectFit: "cover",
-                  objectPosition:
-                    bestImageType === "mobile" ? "center 35%" : "center center",
-                }}
-                priority={index === 0}
-                sizes="100vw"
-                quality={95}
-              />
-            </div>
+        {slides.map((slide, index) => {
+          const imageSrc = getImageSrc(slide);
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none" />
-          </div>
-        ))}
+          return (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                index === currentSlide
+                  ? "opacity-100 scale-100"
+                  : "opacity-0 scale-105"
+              }`}
+            >
+              <div className="w-full h-full relative overflow-hidden">
+                {imageSrc && (
+                  <Image
+                    src={imageSrc}
+                    alt={slide.alt}
+                    fill
+                    className="object-cover"
+                    style={{
+                      objectFit: "cover",
+                      objectPosition:
+                        bestImageType === "mobile"
+                          ? "center 35%"
+                          : "center center",
+                    }}
+                    priority={index === 0}
+                    sizes="100vw"
+                    quality={95}
+                  />
+                )}
+              </div>
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none" />
+            </div>
+          );
+        })}
       </div>
 
       {/* Navigation Arrows */}
@@ -245,8 +274,6 @@ export function HeroCarousel() {
                   <div className="h-1 w-16 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full"></div>
                 </div>
 
-                {/* Heading */}
-
                 {/* Subheading with icon */}
                 <div
                   className={`flex items-start gap-2 transition-all duration-500 justify-end ${
@@ -291,11 +318,6 @@ export function HeroCarousel() {
           </div>
         ))}
       </div>
-
-      {/* Debug indicator */}
-      {/* <div className="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 rounded text-xs z-30">
-        Using: {bestImageType} | Slide: {currentSlide + 1}
-      </div> */}
     </div>
   );
 }

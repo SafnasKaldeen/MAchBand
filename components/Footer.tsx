@@ -93,7 +93,7 @@ export default function Footer() {
           </div>
 
           {/* Right Section - Address */}
-          <div className="flex flex-col">
+          <div className="flex flex-col text-center md:text-left">
             <h3 className="text-2xl font-bold mb-4 text-blue-900">Address</h3>
             <div className="space-y-3 text-blue-900">
               <p className="font-semibold text-lg">

@@ -68,7 +68,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={montserrat.variable}>
+    <html
+      lang="en"
+      className={montserrat.variable}
+      style={{ overflowX: "hidden", maxWidth: "100vw" }}
+    >
       <head>
         <meta
           name="google-site-verification"
@@ -86,9 +90,9 @@ export default function RootLayout({
               "@id": "https://machwristbands.lk",
               url: "https://machwristbands.lk",
               telephone: "+94-070 492 5375",
-              priceRange: "$$",
+              priceRange: "$",
               description:
-                "Sri Lanka’s trusted supplier for custom silicone and event wristbands.",
+                "Sri Lanka's trusted supplier for custom silicone and event wristbands.",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "No. 1, 4 Bandaranayake Mawatha",
@@ -161,7 +165,10 @@ export default function RootLayout({
         <meta name="author" content="Mach Wristbands Sri Lanka" />
       </head>
 
-      <body className={montserrat.className}>
+      <body
+        className={montserrat.className}
+        style={{ overflowX: "hidden", maxWidth: "100vw", position: "relative" }}
+      >
         <Suspense fallback={<PageLoader />}>{children}</Suspense>
         <Analytics />
       </body>
