@@ -94,7 +94,7 @@ export default function ProductsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header - Matching Landing Page */}
-      <Header />
+      {/* <Header /> */}
 
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-b from-blue-50 to-white">

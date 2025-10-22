@@ -32,7 +32,7 @@ export default function CMYKPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <Header />
+      {/* <Header /> */}
 
       <ProductQuickNav />
 

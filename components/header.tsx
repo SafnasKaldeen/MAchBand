@@ -34,7 +34,7 @@ export default function Header() {
             </Link>
             <nav className="hidden md:flex items-center gap-8">
               <Link
-                href="/#home"
+                href="/"
                 className="text-xl font-bold text-gray-900 hover:text-blue-400 transition-colors"
               >
                 Home
@@ -117,7 +117,7 @@ export default function Header() {
           <div className="fixed top-0 right-0 h-screen w-64 bg-white shadow-2xl z-[70] md:hidden animate-slide-in">
             <nav className="flex flex-col p-6 gap-6">
               <Link
-                href="/#home"
+                href="/"
                 onClick={closeMobileMenu}
                 className="text-lg font-bold text-gray-900 hover:text-blue-400 transition-colors py-2 border-b border-gray-200"
               >

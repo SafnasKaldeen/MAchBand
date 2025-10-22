@@ -7,6 +7,7 @@ import Script from "next/script";
 import "./globals.css";
 import { getSEOTags } from "@/lib/seo";
 import PageLoader from "@/components/loader";
+import Header from "@/components/header";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -169,7 +170,12 @@ export default function RootLayout({
         className={montserrat.className}
         style={{ overflowX: "hidden", maxWidth: "100vw", position: "relative" }}
       >
-        <Suspense fallback={<PageLoader />}>{children}</Suspense>
+        <Suspense fallback={<PageLoader />}>
+          <div className="fixed top-0 left-0 right-0 z-50 w-full">
+            <Header />
+          </div>
+          <div className="pt-20">{children}</div>
+        </Suspense>
         <Analytics />
       </body>
     </html>

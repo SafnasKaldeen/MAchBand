@@ -23,7 +23,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gray-300">
       {/* Header - Matching Landing Page */}
-      <Header />
+      {/* <Header /> */}
 
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-b from-blue-50 to-white">

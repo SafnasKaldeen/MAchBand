@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-300">
       {/* Header - Fixed Height */}
-      <Header />
+      {/* <Header /> */}
 
       {/* Hero Section - Uses exact calculation for consistent height */}
       <section

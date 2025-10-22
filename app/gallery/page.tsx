@@ -37,7 +37,7 @@ export default function GalleryPage() {
   return (
     <div className="min-h-screen bg-gray-300">
       {/* Header - Matching Landing Page */}
-      <Header />
+      {/* <Header /> */}
 
       {/* Gallery Hero */}
       <section className="py-20 bg-gradient-to-b from-blue-50 to-white">

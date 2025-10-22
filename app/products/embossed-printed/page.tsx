@@ -31,7 +31,7 @@ export default function EmbossedPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header Component */}
-      <Header />
+      {/* <Header /> */}
 
       <ProductQuickNav />
 

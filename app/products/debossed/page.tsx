@@ -31,7 +31,7 @@ export default function DebossedPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <Header />
+      {/* <Header /> */}
 
       <ProductQuickNav />
 

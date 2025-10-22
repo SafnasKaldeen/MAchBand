@@ -31,7 +31,7 @@ export default function SilkScreenPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <Header />
+      {/* <Header /> */}
 
       <ProductQuickNav />
 
