@@ -94,8 +94,8 @@ export default function Footer() {
 
           {/* Right Section - Address */}
           <div className="flex flex-col text-center md:text-left">
-            <h3 className="text-2xl font-bold mb-4 text-blue-900">Address</h3>
-            <div className="space-y-3 text-blue-900">
+            <h3 className="text-2xl font-bold mb-4 text-black">Address</h3>
+            <div className="space-y-3 text-black">
               <p className="font-semibold text-lg">
                 No. 1, 4 Bandaranayake Mawatha,
                 <br />
@@ -103,7 +103,7 @@ export default function Footer() {
                 <br />
                 Sri Lanka.
               </p>
-              <div className="space-y-1 text-blue-900">
+              <div className="space-y-1 text-black">
                 <p>Mon-Fri : 8.00 AM to 6.00 PM</p>
                 <p>Saturday : 8.30 AM to 2.00 PM</p>
                 <p>Sunday : Closed</p>
