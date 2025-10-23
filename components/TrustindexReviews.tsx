@@ -22,6 +22,17 @@ export default function TrustindexReviews() {
     script.onload = () => {
       console.log("Shapo script loaded successfully");
       setScriptLoaded(true);
+
+      // Give the script a moment to initialize and inject content
+      setTimeout(() => {
+        console.log("Checking for injected widgets...");
+        const formWidget = document.getElementById("shapo-form-d789aaa69a");
+        const reviewWidget = document.getElementById(
+          "shapo-widget-81fcf30f2c46d5c4fbe3"
+        );
+        console.log("Form widget found:", !!formWidget?.innerHTML);
+        console.log("Review widget found:", !!reviewWidget?.innerHTML);
+      }, 500);
     };
 
     script.onerror = (error) => {
@@ -40,10 +51,10 @@ export default function TrustindexReviews() {
   }, []);
 
   return (
-    <section className="py-20 bg-white mx-0 px-0">
-      <div className="container mx-auto px-0">
+    <section className="py-20 bg-white flex items-center justify-center min-h-screen">
+      <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-32">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
             Our customers love working with us
           </h2>
@@ -53,27 +64,37 @@ export default function TrustindexReviews() {
           </p>
         </div>
 
-        {/* Shapo Widget Container */}
-        <div className="max-w-[90vw] mx-auto min-h-[400px] relative">
-          {/* Loading indicator */}
-          {!scriptLoaded && (
-            <div className="flex justify-center items-center min-h-[400px]">
-              <div className="text-center">
-                <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
-                <p className="text-gray-600">Loading reviews...</p>
-              </div>
+        {/* Loading indicator */}
+        {!scriptLoaded && (
+          <div className="flex justify-center items-center min-h-[400px]">
+            <div className="text-center">
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
+              <p className="text-gray-600">Loading reviews...</p>
             </div>
-          )}
+          </div>
+        )}
 
-          {/* Shapo widget div - must exist for script to inject */}
-          <div
-            id="shapo-widget-81fcf30f2c46d5c4fbe3"
-            style={{
-              minHeight: scriptLoaded ? "400px" : "0",
-              opacity: scriptLoaded ? 1 : 0,
-              transition: "opacity 0.3s ease-in-out",
-            }}
-          ></div>
+        <div
+          className="max-w-7xl mx-auto px-4"
+          style={{
+            opacity: scriptLoaded ? 1 : 0,
+            transition: "opacity 0.5s ease-in-out",
+          }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Reviews Display Widget */}
+            <div className="min-h-[400px] flex items-center">
+              <div
+                id="shapo-widget-81fcf30f2c46d5c4fbe3"
+                className="w-full"
+              ></div>
+            </div>
+
+            {/* Review Form Widget */}
+            <div className="min-h-[400px]">
+              <div id="shapo-form-d789aaa69a" className="w-full"></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
