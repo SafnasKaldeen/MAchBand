@@ -81,18 +81,13 @@ export default function TrustindexReviews() {
             transition: "opacity 0.5s ease-in-out",
           }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-8">
             {/* Reviews Display Widget */}
             <div className="min-h-[400px] flex items-center">
               <div
                 id="shapo-widget-81fcf30f2c46d5c4fbe3"
                 className="w-full"
               ></div>
-            </div>
-
-            {/* Review Form Widget */}
-            <div className="min-h-[400px]">
-              <div id="shapo-form-d789aaa69a" className="w-full"></div>
             </div>
           </div>
         </div>
